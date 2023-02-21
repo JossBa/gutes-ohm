@@ -1,2 +1,2 @@
 # GUTES-OHM
-An app for mediation and conflict management. 
+An app for mediation and conflict management.
