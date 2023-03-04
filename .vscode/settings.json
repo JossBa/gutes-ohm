@@ -1,7 +1,15 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true    // ESLint auto format on save
+    "source.fixAll.eslint": true // ESLint auto format on save
   },
-  "editor.formatOnSave": true,      // Prettier auto format on save
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.formatOnSave": true, // Prettier auto format on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "css": "css"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

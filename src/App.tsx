@@ -18,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <h1 className="mix-blend-color-dodge">Hello world!</h1>
       </header>
     </div>
   )
