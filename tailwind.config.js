@@ -2,7 +2,16 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: '#EFEEE7',
+        yellowdark: '#F9BB00',
+      },
+    },
+    fontFamily: {
+      sfPro: ['Source Serif Pro', 'serif'],
+      golos: ['Golos Text', 'sans-serif'],
+    },
   },
   plugins: [],
 }
