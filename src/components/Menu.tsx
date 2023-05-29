@@ -1,26 +1,23 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export const Menu = () => {
+const DesktopMenu = () => {
+  return (
+    <div className="hidden md:flex items-center space-x-8 py-4 px-4 font-golos text-3xl w-96">
+      <Link to="#ohm">OHM</Link>
+      <Link to="/streiten">Start</Link>
+      <Link to="#about">About</Link>
+    </div>
+  )
+}
+
+const MobileMenu = () => {
   const [toggle, setToggle] = useState(true)
   const showMenu = 'mobile-menu md:hidden'
   const hideMenu = 'mobile-menu md:hidden hidden'
 
   return (
-    <div className="absolute bg-background w-full">
-      {/** Desktop Menu*/}
-      <div className="hidden md:flex items-center space-x-1">
-        <a href="#ohm" className="py-4 px-4 font-golos text-3xl">
-          OHM
-        </a>
-        <a href="#start" className="py-4 px-4 font-golos text-3xl">
-          Start
-        </a>
-        <a href="#about" className="py-4 px-4 font-golos text-3xl">
-          About
-        </a>
-      </div>
-
-      {/** Mobile Icon */}
+    <>
       <div className="md:hidden flex items-center">
         <button
           className="mobile-menu-button"
@@ -65,19 +62,22 @@ export const Menu = () => {
           )}
         </button>
       </div>
-
-      {/** Mobile Menu */}
       <div className={toggle ? hideMenu : showMenu}>
-        <a href="#ohm" className="block py-4 px-4 font-golos text-3xl">
-          OHM
-        </a>
-        <a href="#start" className="block py-4 px-4 font-golos text-3xl">
-          Start
-        </a>
-        <a href="#about" className="block py-4 px-4 font-golos text-3xl">
-          About
-        </a>
+        <div className="flex flex-col font-golos text-3xl items-center p-4 space-y-8">
+          <Link to="#ohm">OHM</Link>
+          <Link to="/streiten">Start</Link>
+          <Link to="#about">About</Link>
+        </div>
       </div>
+    </>
+  )
+}
+
+export const Menu = () => {
+  return (
+    <div className="absolute bg-background w-full">
+      <DesktopMenu />
+      <MobileMenu />
     </div>
   )
 }
