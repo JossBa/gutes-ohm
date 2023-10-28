@@ -6,11 +6,14 @@ import { RootState } from '../app/store'
 import { GameStepProps } from './types'
 
 export const Consent = ({ handleNext }: GameStepProps) => {
-  // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
+  const {
+    step: { activePlayer },
+    playerA,
+    playerB,
+  } = useSelector((state: RootState) => state.game)
 
-  const { current: currentPlayer, partner: partnerPlayer } = useSelector(
-    (state: RootState) => state.game
-  )
+  const currentPlayer = activePlayer === 'a' ? playerA : playerB
+  const partnerPlayer = activePlayer === 'a' ? playerB : playerA
 
   const [checked1, setChecked1] = React.useState(false)
   const [checked2, setChecked2] = React.useState(false)

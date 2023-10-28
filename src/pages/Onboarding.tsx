@@ -1,8 +1,9 @@
+import { useNavigate } from 'react-router'
 import { Header } from '../components/Header'
-import { GameStepProps } from './types'
 
-export const Onboarding = ({ handleNext }: GameStepProps) => {
+export const Onboarding = () => {
   // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
+  const navigate = useNavigate()
 
   return (
     <>
@@ -19,7 +20,7 @@ export const Onboarding = ({ handleNext }: GameStepProps) => {
           <li>Ihr müsst euch gegenseitig zuhören</li>
         </ul>
       </div>
-      <button onClick={handleNext}>WEITER</button>
+      <button onClick={() => navigate('/names')}>WEITER</button>
     </>
   )
 }

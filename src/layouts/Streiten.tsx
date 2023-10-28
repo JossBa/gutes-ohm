@@ -14,12 +14,12 @@ const playerColors: Record<string, Colors> = {
 
 export const Streiten = () => {
   const { step } = useSelector((state: RootState) => state.game)
-  const [colorChange, setColorChange] = useState(playerColors[step.mainPlayer])
+  const [colorChange, setColorChange] = useState(playerColors[step.activePlayer ?? 'defaultColor'])
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setColorChange(playerColors[step.mainPlayer])
-  }, [colorChange, step.mainPlayer])
+    setColorChange(playerColors[step.activePlayer ?? 'defaultColor'])
+  }, [colorChange, step.activePlayer])
 
   const GameComponent = useComponentByType(step.component)
 

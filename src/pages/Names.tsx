@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
-import { Form, useOutletContext } from 'react-router-dom'
+import { Form, useNavigate } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { names } from '../game/gameSlice'
 import { RootState } from '../app/store'
-import { GameStepProps } from './types'
 
-export const Names = ({ handleNext }: GameStepProps) => {
+export const Names = () => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
-  // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [player1, setPlayer1] = useState(playerA.name)
-  const [player2, setPlayer2] = useState(playerB.name)
+  const [player1, setPlayer1] = useState(playerA)
+  const [player2, setPlayer2] = useState(playerB)
 
   const [error1, setError1] = React.useState(false)
   const [error2, setError2] = React.useState(false)
@@ -22,7 +21,7 @@ export const Names = ({ handleNext }: GameStepProps) => {
     event.preventDefault()
     if (player1 && player2) {
       dispatch(names({ playerA: player1, playerB: player2 }))
-      handleNext()
+      navigate('/streiten')
     } else {
       player1 === '' ? setError1(true) : setError1(false)
       player2 === '' ? setError2(true) : setError2(false)

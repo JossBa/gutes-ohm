@@ -10,6 +10,8 @@ import {
 
 import { Home } from './pages/Home'
 import { Streiten } from './layouts/Streiten'
+import { Onboarding } from './pages/Onboarding'
+import { Names } from './pages/Names'
 
 const withStreitenNavigationHandling =
   <P extends Record<string, unknown>>(WrappedComponent: React.ComponentType<P>) =>
@@ -40,6 +42,8 @@ const StreitenWithNavigationHandling = withStreitenNavigationHandling(Streiten)
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<Home />} />,
+    <Route path="/onboarding" element={<Onboarding />} />,
+    <Route path="/names" element={<Names />} />,
     <Route path="streiten" element={<StreitenWithNavigationHandling />} />,
   ])
 )
