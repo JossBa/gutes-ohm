@@ -1,11 +1,12 @@
 import React from 'react'
 import { Header } from '../components/Header'
-import { Form, useOutletContext } from 'react-router-dom'
+import { Form } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store'
+import { GameStepProps } from './types'
 
-export const Consent = () => {
-  const { trigger } = useOutletContext() as { trigger: () => void | undefined }
+export const Consent = ({ handleNext }: GameStepProps) => {
+  // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
 
   const { current: currentPlayer, partner: partnerPlayer } = useSelector(
     (state: RootState) => state.game
@@ -18,7 +19,7 @@ export const Consent = () => {
   const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
     if (checked1 && checked2) {
-      trigger()
+      handleNext()
       setChecked1(false)
       setChecked2(false)
     } else {

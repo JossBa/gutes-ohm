@@ -5,8 +5,9 @@ import { GameStep, getStep, getNextRoute } from './steps'
 const getCurrentStep = (indexOfRoute: number): GameStep => {
   const step = getStep(indexOfRoute)
   if (!step) {
+    // TODO: this is not clean
     indexOfRoute = 0
-    return { route: '', mainPlayer: '', partnerPlayer: 'b' }
+    return { route: '', component: 'Home', mainPlayer: '', partnerPlayer: '' }
   }
   return step
 }

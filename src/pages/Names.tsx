@@ -4,10 +4,11 @@ import { Header } from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { names } from '../game/gameSlice'
 import { RootState } from '../app/store'
+import { GameStepProps } from './types'
 
-export const Names = () => {
+export const Names = ({ handleNext }: GameStepProps) => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
-  const { trigger } = useOutletContext() as { trigger: () => void | undefined }
+  // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
 
   const dispatch = useDispatch()
 
@@ -21,7 +22,7 @@ export const Names = () => {
     event.preventDefault()
     if (player1 && player2) {
       dispatch(names({ playerA: player1, playerB: player2 }))
-      trigger()
+      handleNext()
     } else {
       player1 === '' ? setError1(true) : setError1(false)
       player2 === '' ? setError2(true) : setError2(false)

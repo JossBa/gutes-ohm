@@ -1,8 +1,8 @@
 import { Header } from '../components/Header'
-import { useOutletContext } from 'react-router-dom'
+import { GameStepProps } from './types'
 
-export const Onboarding = () => {
-  const { trigger } = useOutletContext() as { trigger: () => void | undefined }
+export const Onboarding = ({ handleNext }: GameStepProps) => {
+  // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
 
   return (
     <>
@@ -19,7 +19,7 @@ export const Onboarding = () => {
           <li>Ihr müsst euch gegenseitig zuhören</li>
         </ul>
       </div>
-      <button onClick={() => trigger()}>Weiter</button>
+      <button onClick={handleNext}>WEITER</button>
     </>
   )
 }

@@ -9,10 +9,6 @@ import {
 } from 'react-router-dom'
 
 import { Home } from './pages/Home'
-import { Onboarding } from './pages/Onboarding'
-import { Names } from './pages/Names'
-import { Consent } from './pages/Consent'
-import { Phase1 } from './pages/Phase1'
 import { Streiten } from './layouts/Streiten'
 
 const withStreitenNavigationHandling =
@@ -21,11 +17,12 @@ const withStreitenNavigationHandling =
     const navigate = useNavigate()
     useEffect(() => {
       const handleNavigation = (event: PopStateEvent) => {
-        // event.preventDefault()
-        console.log(event, window.location.pathname)
-        if (window.location.pathname === '/') {
-          console.log('I am here')
-          navigate('/', { replace: true })
+        event.preventDefault()
+        const stopGame = window.confirm('Are you sure you want to leave?')
+        if (stopGame) {
+          navigate('/')
+        } else {
+          window.history.forward()
         }
       }
       window.addEventListener('popstate', handleNavigation)
@@ -43,12 +40,7 @@ const StreitenWithNavigationHandling = withStreitenNavigationHandling(Streiten)
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<Home />} />,
-    <Route path="streiten" element={<StreitenWithNavigationHandling />}>
-      <Route path="onboarding-intro" element={<Onboarding />} />,
-      <Route path="onboarding-names" element={<Names />} />,
-      <Route path="consent" element={<Consent />} />
-      <Route path="phase-1" element={<Phase1 />} />
-    </Route>,
+    <Route path="streiten" element={<StreitenWithNavigationHandling />} />,
   ])
 )
 

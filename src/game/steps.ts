@@ -1,5 +1,8 @@
+import { GameComponentType } from './getGameComponent'
+
 export type GameStep = {
   route: string
+  component: GameComponentType
   mainPlayer: string
   partnerPlayer: string
 }
@@ -7,41 +10,49 @@ export type GameStep = {
 const stepsInGameConfiguration: GameStep[] = [
   {
     route: '/',
-    mainPlayer: 'a',
+    component: 'Home',
+    mainPlayer: 'defaultColor',
     partnerPlayer: 'b',
   },
   {
-    route: 'streiten/onboarding-intro',
-    mainPlayer: 'a',
+    route: 'streiten',
+    component: 'Onboarding',
+    mainPlayer: 'defaultColor',
     partnerPlayer: 'b',
   },
   {
     route: 'onboarding-names',
+    component: 'Names',
+    mainPlayer: 'defaultColor',
+    partnerPlayer: 'b',
+  },
+  {
+    route: 'consent',
+    component: 'Consent',
     mainPlayer: 'a',
     partnerPlayer: 'b',
   },
   {
     route: 'consent',
-    mainPlayer: 'a',
-    partnerPlayer: 'b',
-  },
-  {
-    route: 'consent',
+    component: 'Consent',
     mainPlayer: 'b',
     partnerPlayer: 'a',
   },
   {
     route: 'phase-1',
+    component: 'Phase1',
     mainPlayer: 'a',
     partnerPlayer: 'b',
   },
   {
     route: 'phase-1',
+    component: 'Phase1',
     mainPlayer: 'b',
     partnerPlayer: 'a',
   },
   {
     route: 'ende',
+    component: 'Home',
     mainPlayer: 'a',
     partnerPlayer: 'b',
   },

@@ -19,7 +19,7 @@ export const Home = () => {
 
   const handleSomething = () => {
     dispatch(nextStep())
-    navigate(nextRoute)
+    navigate('/streiten')
   }
 
   return (
