@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { nextStep } from '../game/gameSlice'
 import { useComponentByType } from '../game/getGameComponent'
 
-type Colors = 'bg-yellowdark' | 'bg-pink-400' | 'bg-slate-300'
+type Colors = 'bg-yellowlight' | 'bg-bluelight' | 'bg-background'
 
 const playerColors: Record<string, Colors> = {
-  defaultColor: 'bg-slate-300',
-  a: 'bg-yellowdark',
-  b: 'bg-pink-400',
+  defaultColor: 'bg-background',
+  a: 'bg-yellowlight',
+  b: 'bg-bluelight',
 } as const
 
 export const Streiten = () => {
@@ -28,9 +28,10 @@ export const Streiten = () => {
   }
 
   return (
-    <div className={colorChange}>
-      <p>Hello I am Streiten layout</p>
-      <GameComponent handleNext={handleSomething} />
-    </div>
+    <>
+      <div className={`${colorChange} h-screen w-full absolute -z-10`}>
+        <GameComponent handleNext={handleSomething} />
+      </div>
+    </>
   )
 }

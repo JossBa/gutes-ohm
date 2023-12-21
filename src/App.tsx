@@ -12,6 +12,7 @@ import { Home } from './pages/Home'
 import { Streiten } from './layouts/Streiten'
 import { Onboarding } from './pages/Onboarding'
 import { Names } from './pages/Names'
+import { NavigationBar } from './layouts/NavigationBar'
 
 const withStreitenNavigationHandling =
   <P extends Record<string, unknown>>(WrappedComponent: React.ComponentType<P>) =>
@@ -20,7 +21,7 @@ const withStreitenNavigationHandling =
     useEffect(() => {
       const handleNavigation = (event: PopStateEvent) => {
         event.preventDefault()
-        const stopGame = window.confirm('Are you sure you want to leave?')
+        const stopGame = window.confirm('Möchtest du den Prozess wirklich beenden?')
         if (stopGame) {
           navigate('/')
         } else {
@@ -37,14 +38,16 @@ const withStreitenNavigationHandling =
     return <WrappedComponent {...props} />
   }
 
-const StreitenWithNavigationHandling = withStreitenNavigationHandling(Streiten)
+const WithNavigationHandling = withStreitenNavigationHandling(NavigationBar)
 
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<Home />} />,
-    <Route path="/onboarding" element={<Onboarding />} />,
-    <Route path="/names" element={<Names />} />,
-    <Route path="streiten" element={<StreitenWithNavigationHandling />} />,
+    <Route path="/streiten" element={<WithNavigationHandling />}>
+      <Route path="onboarding" element={<Onboarding />} />,
+      <Route path="names" element={<Names />} />,
+      <Route path="" element={<Streiten />} />,
+    </Route>,
   ])
 )
 

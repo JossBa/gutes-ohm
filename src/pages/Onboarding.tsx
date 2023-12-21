@@ -1,26 +1,24 @@
 import { useNavigate } from 'react-router'
 import { Header } from '../components/Header'
+import { ButtonContainer } from '../components/ButtonContainer'
+import { Button } from '../components/Button'
+import { ContentWrapper } from '../components/ContentWrapper'
 
 export const Onboarding = () => {
-  // const { trigger } = useOutletContext() as { trigger: () => void | undefined }
   const navigate = useNavigate()
 
   return (
     <>
-      <Header title={'Das erwartet euch'} section={'Zu Beginn'} />
-      <div className="text-center space-y-3">
-        <div>
+      <Header section={'Zu Beginn'} title={'Das erwartet euch'} />
+      <ContentWrapper>
+        <div className="space-y-2 font-sourceSerif text-xl font-semibold">
           <p>Streitlösung in ca. 30 min.</p>
           <p>Ein Prozess in 3 Phasen.</p>
         </div>
-        <h3 className="text-xl font-semibold">Ein strukturierter Ablauf:</h3>
-        <ul className="list-disc ml-5 text-left">
-          <li>Ihr habt beide genug Zeit</li>
-          <li>Ihr kommt beide zu Wort</li>
-          <li>Ihr müsst euch gegenseitig zuhören</li>
-        </ul>
-      </div>
-      <button onClick={() => navigate('/names')}>WEITER</button>
+      </ContentWrapper>
+      <ButtonContainer>
+        <Button title="Weiter" onClick={() => navigate('/streiten/names')} />
+      </ButtonContainer>
     </>
   )
 }

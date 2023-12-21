@@ -11,7 +11,7 @@ export interface GameState {
 const initialState: GameState = {
   playerA: '',
   playerB: '',
-  step: { component: 'Consent', activePlayer: 'a', next: 2 },
+  step: getStep(0),
 }
 
 export const gameSlice = createSlice({

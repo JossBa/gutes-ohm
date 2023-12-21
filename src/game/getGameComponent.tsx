@@ -1,12 +1,18 @@
 import React from 'react'
 import { Consent } from '../pages/Consent'
-import { PhasenIntro } from '../pages/PhasenIntro'
+import { PhaseOneIntro } from '../pages/PhaseOne/PhaseOneIntro'
 import { GameStepProps } from '../pages/types'
+import { PhaseOneExplain } from '../pages/PhaseOne/PhaseOneExplain'
+import { GenericError } from '../pages/GenericError'
+import { PhaseOneRepeat } from '../pages/PhaseOne/PhaseOneRepeat'
 
 // Define a mapping of component types to functions that return the corresponding components
 const componentMapping = {
   Consent,
-  PhasenIntro,
+  PhaseOneIntro,
+  PhaseOneExplain,
+  PhaseOneRepeat,
+  GenericError,
 } as const
 
 // Get the union type of valid component types automatically
