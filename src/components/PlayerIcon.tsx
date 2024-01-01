@@ -1,14 +1,21 @@
+import { Player } from '../game/steps'
+
+type IconStyle = 'full' | 'outline'
+
 export const PlayerIcon = ({
   player,
   display = 'full',
 }: {
-  player: 'a' | 'b' | undefined
-  display?: 'full' | 'outline'
+  player?: Player
+  display?: IconStyle
 }) => {
   return (
-    <img
-      src={`${player === 'a' ? `img/quadrat-${display}.svg` : `img/dreieck-${display}.svg`} `}
-      alt="player symbol"
-    />
+    <>
+      {player === 'player1' ? (
+        <img src={`img/quadrat-${display}.svg`} alt="player1 symbol" />
+      ) : player === 'player2' ? (
+        <img src={`img/dreieck-${display}.svg`} alt="player2 symbol" />
+      ) : null}
+    </>
   )
 }

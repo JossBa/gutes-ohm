@@ -1,12 +1,10 @@
-import { useNavigate } from 'react-router'
 import { Header } from '../components/Header'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { Button } from '../components/Button'
 import { ContentWrapper } from '../components/ContentWrapper'
+import { GameStepProps } from './types'
 
-export const Onboarding = () => {
-  const navigate = useNavigate()
-
+export const Onboarding = ({ nextStep }: GameStepProps) => {
   return (
     <>
       <Header section={'Zu Beginn'} title={'Das erwartet euch'} />
@@ -17,7 +15,7 @@ export const Onboarding = () => {
         </div>
       </ContentWrapper>
       <ButtonContainer>
-        <Button title="Weiter" onClick={() => navigate('/streiten/names')} />
+        <Button title="Weiter" onClick={nextStep} />
       </ButtonContainer>
     </>
   )

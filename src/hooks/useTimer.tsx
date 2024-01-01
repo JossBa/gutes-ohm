@@ -1,9 +1,16 @@
 import { useState } from 'react'
 
-export const useTimer = (duration: number) => {
+type Timer = {
+  handleStart: () => void
+  time: string
+  counting: boolean
+  started: boolean
+}
+
+export const useTimer = (duration: number): Timer => {
   const [time, setTime] = useState(duration)
-  const [started, setStarted] = useState(false)
   const [counting, setCounting] = useState(false)
+  const [started, setStarted] = useState(false)
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60)
@@ -14,13 +21,13 @@ export const useTimer = (duration: number) => {
   }
 
   const handleStart = () => {
+    setCounting(true)
+    setStarted(!started)
     const interval = setInterval(() => {
-      setStarted(!started)
-      setCounting(true)
       setTime((prevTime) => {
         const newTime = prevTime - 1
         if (newTime === 0) {
-          clearInterval(interval) // Clear the interval when time reaches 0
+          clearInterval(interval)
           setCounting(false)
         }
         return newTime
@@ -31,7 +38,7 @@ export const useTimer = (duration: number) => {
   return {
     handleStart,
     time: formatTime(time),
-    started,
     counting,
+    started,
   }
 }

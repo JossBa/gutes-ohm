@@ -1,27 +1,46 @@
 import { GameComponentType } from './getGameComponent'
 
+export type Player = 'player1' | 'player2'
+export type Colors = 'YELLOW' | 'BLUE' | 'LIGHT_GREY' | 'GRADIENT'
+
 export type GameStep = {
   component: GameComponentType
-  activePlayer?: 'a' | 'b'
-  next: number
+  backgroundColor?: Colors
+  activePlayer?: Player
 }
 
-const stepsInGameConfiguration = new Map<number, GameStep>([
-  [0, { component: 'Consent', activePlayer: 'a', next: 1 }],
-  [1, { component: 'Consent', activePlayer: 'b', next: 2 }],
-  [2, { component: 'PhaseOneIntro', next: 3 }],
-  [3, { component: 'PhaseOneExplain', activePlayer: 'a', next: 4 }],
-  [4, { component: 'PhaseOneRepeat', activePlayer: 'b', next: 5 }],
-  [5, { component: 'PhaseOneExplain', activePlayer: 'b', next: 6 }],
-  [6, { component: 'PhaseOneRepeat', activePlayer: 'a', next: 1 }],
-])
+const createGameStep = (
+  component: GameComponentType,
+  activePlayer?: Player,
+  backgroundColor: Colors = 'LIGHT_GREY'
+): GameStep => ({
+  component,
+  backgroundColor,
+  activePlayer,
+})
+
+export const stepsInGameConfiguration: GameStep[] = [
+  createGameStep('Onboarding'),
+  createGameStep('Names'),
+  createGameStep('Consent', 'player1', 'YELLOW'),
+  createGameStep('Consent', 'player2', 'BLUE'),
+  createGameStep('PhaseOneIntro'),
+  createGameStep('PhaseOneExplain', 'player1', 'YELLOW'),
+  createGameStep('PhaseOneRepeat', 'player2', 'BLUE'),
+  createGameStep('PhaseOneConfirm', 'player1', 'YELLOW'),
+  createGameStep('PhaseOneExplain', 'player2', 'BLUE'),
+  createGameStep('PhaseOneRepeat', 'player1', 'YELLOW'),
+  createGameStep('PhaseOneConfirm', 'player2', 'BLUE'),
+  createGameStep('PhaseOneComplete', undefined, 'GRADIENT'),
+  createGameStep('PhaseOneMoodcheck', 'player1', 'YELLOW'),
+  createGameStep('PhaseOneMoodcheck', 'player2', 'BLUE'),
+]
 
 export const getStep = (id: number): GameStep => {
   return (
-    stepsInGameConfiguration.get(id) ?? {
+    stepsInGameConfiguration[id] || {
       component: 'GenericError',
       activePlayer: undefined,
-      next: -1,
     }
   )
 }

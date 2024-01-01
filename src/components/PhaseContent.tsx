@@ -10,7 +10,7 @@ interface PhaseContentProps extends GameStepProps {
   activePlayerInstructions: string
   partnerPlayerInstructions?: string
   buttonTitle: string
-  activePlayer: 'a' | 'b' | undefined
+  activePlayer: 'player1' | 'player2' | undefined
   currentPlayer: string
   partnerPlayer: string
   time: string
@@ -28,7 +28,7 @@ export const PhaseContent = ({
   started,
   counting,
   handleStart,
-  handleNext,
+  nextStep,
   buttonTitle,
   activePlayerInstructions,
   partnerPlayerInstructions,
@@ -42,7 +42,10 @@ export const PhaseContent = ({
       </p>
       {partnerPlayerInstructions && (
         <>
-          <PlayerIcon player={activePlayer === 'a' ? 'b' : 'a'} display="outline" />
+          <PlayerIcon
+            player={activePlayer === 'player1' ? 'player2' : 'player1'}
+            display="outline"
+          />
           <p className="font-sourceSerif text-xl font-semibold text-center italic">
             {partnerPlayerInstructions}
           </p>
@@ -52,10 +55,10 @@ export const PhaseContent = ({
     </ContentWrapper>
     <ButtonContainer>
       <Button
-        style={started && counting ? 'secondary' : 'primary'}
+        buttonStyle={started && counting ? 'secondary' : 'primary'}
         disabled={false}
         title={started ? (counting ? 'Bin schon fertig' : buttonTitle) : 'Start'}
-        onClick={!started ? handleStart : handleNext}
+        onClick={!started ? handleStart : nextStep}
       />
     </ButtonContainer>
   </>

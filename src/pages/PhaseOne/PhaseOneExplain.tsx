@@ -4,9 +4,9 @@ import { PhaseContent } from '../../components/PhaseContent'
 import { AnimatedSlope } from '../../components/AnimatedSlope'
 import { usePlayers } from '../../hooks/usePlayers'
 
-export const PhaseOneExplain = ({ handleNext }: GameStepProps) => {
+export const PhaseOneExplain = ({ nextStep }: GameStepProps) => {
   const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
-  const { handleStart, time, started, counting } = useTimer(180)
+  const { handleStart, time, counting, started } = useTimer(180)
 
   return (
     <>
@@ -20,7 +20,7 @@ export const PhaseOneExplain = ({ handleNext }: GameStepProps) => {
         started={started}
         counting={counting}
         handleStart={handleStart}
-        handleNext={handleNext}
+        nextStep={nextStep}
         buttonTitle="Weiter"
         activePlayerInstructions={`Hey, ${currentPlayer}! Teile ${partnerPlayer} in drei Minuten deine Sicht auf den Konflikt mit.`}
         partnerPlayerInstructions={`${partnerPlayer}, deine Aufgabe ist es, aktiv zuzuhören und nicht zu reden.`}

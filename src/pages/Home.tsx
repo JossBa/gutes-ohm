@@ -20,7 +20,7 @@ export const Home = () => {
       <div className="slope-element absolute h-screen w-full -z-10 bg-yellowdark "></div>
       <Hero />
       <ButtonContainer>
-        <Button title={'Start'} onClick={() => navigate('/streiten/onboarding')} />
+        <Button title={'Start'} onClick={() => navigate('/streiten')} />
       </ButtonContainer>
     </>
   )

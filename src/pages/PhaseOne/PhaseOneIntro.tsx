@@ -5,7 +5,7 @@ import { ButtonContainer } from '../../components/ButtonContainer'
 import icon from '../../assets/sprechblase.png'
 import { ContentWrapper } from '../../components/ContentWrapper'
 
-export const PhaseOneIntro = ({ handleNext }: GameStepProps) => {
+export const PhaseOneIntro = ({ nextStep }: GameStepProps) => {
   return (
     <>
       <Header title={`Worum geht's`} section={'Phase 1/3'}></Header>
@@ -17,7 +17,7 @@ export const PhaseOneIntro = ({ handleNext }: GameStepProps) => {
         <img src={icon} alt="sprechblase" />
       </ContentWrapper>
       <ButtonContainer>
-        <Button onClick={handleNext} title={`Los geht's`} />
+        <Button onClick={nextStep} title={`Los geht's`} />
       </ButtonContainer>
     </>
   )

@@ -10,9 +10,9 @@ import {
 
 import { Home } from './pages/Home'
 import { Streiten } from './layouts/Streiten'
-import { Onboarding } from './pages/Onboarding'
-import { Names } from './pages/Names'
 import { NavigationBar } from './layouts/NavigationBar'
+import { BreakRoom } from './components/BreakRoom'
+import { Test } from './pages/Test'
 
 const withStreitenNavigationHandling =
   <P extends Record<string, unknown>>(WrappedComponent: React.ComponentType<P>) =>
@@ -43,18 +43,20 @@ const WithNavigationHandling = withStreitenNavigationHandling(NavigationBar)
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<Home />} />,
+    <Route path="/test" element={<Test />} />,
     <Route path="/streiten" element={<WithNavigationHandling />}>
-      <Route path="onboarding" element={<Onboarding />} />,
-      <Route path="names" element={<Names />} />,
       <Route path="" element={<Streiten />} />,
     </Route>,
+    <Route path="pause" element={<BreakRoom />} />,
   ])
 )
 
 function App() {
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <div className="w-full h-screen flex flex-col justify-between overflow-hidden items-center text-center p-4">
+        <RouterProvider router={router} />
+      </div>
     </React.StrictMode>
   )
 }

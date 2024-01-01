@@ -1,12 +1,12 @@
-import { GameStepProps } from './../types'
+import { GameStepProps } from '../types'
 import { useTimer } from '../../hooks/useTimer'
 import { PhaseContent } from '../../components/PhaseContent'
 import { AnimatedSlope } from '../../components/AnimatedSlope'
 import { usePlayers } from '../../hooks/usePlayers'
 
-export const PhaseOneRepeat = ({ handleNext }: GameStepProps) => {
+export const PhaseOneRepeat = ({ nextStep }: GameStepProps) => {
   const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
-  const { handleStart, time, started, counting } = useTimer(60)
+  const { handleStart, time, counting, started } = useTimer(60)
 
   return (
     <>
@@ -20,10 +20,10 @@ export const PhaseOneRepeat = ({ handleNext }: GameStepProps) => {
         started={started}
         counting={counting}
         handleStart={handleStart}
-        handleNext={handleNext}
+        nextStep={nextStep}
         buttonTitle="Weiter"
         activePlayerInstructions={`${currentPlayer}, in 60 Sekunden: Wie beschreibt ${partnerPlayer} den Konflikt?`}
-        partnerPlayerInstructions={`${partnerPlayer}, Michael, deine Aufgabe ist es, aktiv zuzuhören und nicht zu reden.`}
+        partnerPlayerInstructions={`${partnerPlayer}, deine Aufgabe ist es, aktiv zuzuhören und nicht zu reden.`}
       />
     </>
   )

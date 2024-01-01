@@ -8,8 +8,8 @@ export const usePlayers = () => {
     playerB,
   } = useSelector((state: RootState) => state.game)
 
-  const currentPlayer = activePlayer === 'a' ? playerA : playerB
-  const partnerPlayer = activePlayer === 'a' ? playerB : playerA
+  const currentPlayer = activePlayer === 'player1' ? playerA : playerB
+  const partnerPlayer = activePlayer === 'player1' ? playerB : playerA
 
   return {
     activePlayer,

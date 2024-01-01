@@ -9,14 +9,14 @@
 // import { GameStepProps } from './types'
 // import { useTimer } from '../components/Timer'
 
-// export const PhaseOneExplain= ({ handleNext }: GameStepProps) => {
+// export const PhaseOneExplain= ({ nextStep }: GameStepProps) => {
 //   const {
 //     step: { activePlayer },
 //     playerA,
 //     playerB,
 //   } = useSelector((state: RootState) => state.game)
-//   const currentPlayer = activePlayer === 'a' ? playerA : playerB
-//   const partnerPlayer = activePlayer === 'a' ? playerB : playerA
+//   const currentPlayer = activePlayer === 'player1' ? playerA : playerB
+//   const partnerPlayer = activePlayer === 'player1' ? playerB : playerA
 //   const { handleStart, time, started, counting } = useTimer(180)
 
 //   return (
@@ -30,7 +30,7 @@
 //           Hey, {currentPlayer}! Teile {partnerPlayer} in drei Minuten deine Sicht auf den Konflikt
 //           mit.{' '}
 //         </p>
-//         <PlayerIcon player={activePlayer === 'a' ? 'b' : 'a'} display="outline" />
+//         <PlayerIcon player={activePlayer === 'player1' ? 'player2' : 'player1'} display="outline" />
 //         <p className="font-sourceSerif text-xl font-semibold text-center italic">
 //           {partnerPlayer}, deine Aufgabe ist es, aktiv zuzuhören und nicht zu reden.
 //         </p>
@@ -40,7 +40,7 @@
 //           style={started && counting ? 'secondary' : 'primary'}
 //           disabled={false}
 //           title={started ? (counting ? 'Bin schon fertig' : 'Weiter') : 'Start'}
-//           onClick={!started ? handleStart : handleNext}
+//           onClick={!started ? handleStart : nextStep}
 //         />
 //       </ButtonContainer>
 //     </>

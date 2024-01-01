@@ -1,14 +1,39 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { previousStep } from '../game/gameSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../app/store'
 
 export const NavigationBar = () => {
+  const { currentStepId } = useSelector((state: RootState) => state.game)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handlePreviousStep = () => {
+    if (currentStepId === 0) {
+      navigate('/')
+    } else {
+      dispatch(previousStep())
+    }
+  }
+
+  const handleBreak = () => {
+    navigate('/pause')
+  }
+
   return (
     <>
       <div className="absolute top-0 left-0 right-0">
-        <div className="p-6 flex flex-row justify-between items-center">
-          <img className="p-1" src="/img/back.svg" alt="back-icon" />
+        <div className="px-4 py-3 flex flex-row justify-between items-center">
+          <button onClick={handlePreviousStep}>
+            <img className="p-1" src="/img/back.svg" alt="back-icon" />
+          </button>
           <div className="flex items-end">
-            <img className="p-1" src="/img/pause.svg" alt="pause-icon" />
-            <img className="p-1" src="/img/exit.svg" alt="exit-icon" />
+            <button onClick={handleBreak}>
+              <img className="p-1" src="/img/pause.svg" alt="pause-icon" />
+            </button>
+            <button onClick={() => navigate('/')}>
+              <img className="p-1" src="/img/exit.svg" alt="exit-icon" />
+            </button>
           </div>
         </div>
       </div>

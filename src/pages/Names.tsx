@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { names } from '../game/gameSlice'
@@ -7,12 +6,11 @@ import { RootState } from '../app/store'
 import { Button } from '../components/Button'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { ContentWrapper } from '../components/ContentWrapper'
+import { GameStepProps } from './types'
 
-export const Names = () => {
+export const Names = ({ nextStep }: GameStepProps) => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
-
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const [player1, setPlayer1] = useState(playerA)
   const [player2, setPlayer2] = useState(playerB)
@@ -24,7 +22,7 @@ export const Names = () => {
     event.preventDefault()
     if (player1 && player2) {
       dispatch(names({ playerA: player1, playerB: player2 }))
-      navigate('/streiten')
+      nextStep()
     } else {
       player1 === '' ? setError1(true) : setError1(false)
       player2 === '' ? setError2(true) : setError2(false)
@@ -38,63 +36,59 @@ export const Names = () => {
           <p>Bitte tragt eure Namen ein. So kann OHM euch ideal durch euren Streit steuern.</p>
         </div>
         <form>
-          <div className="w-full mt-10 space-y-10">
-            <div className="w-80 h-16">
-              <label>
-                <input
-                  className={`w-full p-4 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-xl uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${
-                    player1 !== ''
-                      ? 'bg-[url("./img/quadrat-full.svg")]'
-                      : 'bg-[url("./img/quadrat-outline.svg")]'
-                  }  `}
-                  type="text"
-                  name="player1"
-                  required
-                  placeholder="Erste Partei"
-                  value={player1}
-                  onChange={(e) => {
-                    setPlayer1(e.target.value)
-                  }}
-                  onFocus={() => {
-                    setError1(false)
-                  }}
-                  autoComplete="off"
-                />
-              </label>
+          <div className="flex flex-col items-center space-y-4">
+            <label>
+              <input
+                className={`w-64 h-14 p-4 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${
+                  player1 !== ''
+                    ? 'bg-[url("./img/quadrat-full.svg")]'
+                    : 'bg-[url("./img/quadrat-outline.svg")]'
+                }  `}
+                type="text"
+                name="player1"
+                required
+                placeholder="Erste Partei"
+                value={player1}
+                onChange={(e) => {
+                  setPlayer1(e.target.value)
+                }}
+                onFocus={() => {
+                  setError1(false)
+                }}
+                autoComplete="off"
+              />
               {error1 && (
-                <p className="text-red-500 font-medium text-base my-1">
+                <p className="text-red-500 font-medium text-base mb-2 pl-2">
                   Bitte gib hier einen Namen ein.
                 </p>
               )}
-            </div>
-            <div className="w-80 h-16">
-              <label>
-                <input
-                  className={`w-full p-4 bg-bluelight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-xl uppercase focus:outline-none focus:ring focus:ring-bluedark bg-no-repeat bg-right bg-origin-content ${
-                    player2 !== ''
-                      ? 'bg-[url("./img/dreieck-full.svg")]'
-                      : 'bg-[url("./img/dreieck-outline.svg")]'
-                  }  `}
-                  type="text"
-                  name="player2"
-                  required
-                  placeholder="Zweite Partei"
-                  value={player2}
-                  onChange={(e) => {
-                    setPlayer2(e.target.value)
-                  }}
-                  onFocus={() => {
-                    setError2(false)
-                  }}
-                  autoComplete="off"
-                />
-              </label>
+            </label>
+            <label>
+              <input
+                className={`w-64 h-14 p-4 m-2 bg-bluelight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-bluedark bg-no-repeat bg-right bg-origin-content ${
+                  player2 !== ''
+                    ? 'bg-[url("./img/dreieck-full.svg")]'
+                    : 'bg-[url("./img/dreieck-outline.svg")]'
+                }  `}
+                type="text"
+                name="player2"
+                required
+                placeholder="Zweite Partei"
+                value={player2}
+                onChange={(e) => {
+                  setPlayer2(e.target.value)
+                }}
+                onFocus={() => {
+                  setError2(false)
+                }}
+                autoComplete="off"
+              />
               {error2 && (
-                <p className="text-red-500 font-golos font-medium text-base my-1">
+                <p className="text-red-500 font-medium text-base mb-2 pl-2">
                   Bitte gib hier einen Namen ein.
                 </p>
               )}
-            </div>
+            </label>
           </div>
         </form>
       </ContentWrapper>

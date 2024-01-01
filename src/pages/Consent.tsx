@@ -8,15 +8,15 @@ import { ButtonContainer } from '../components/ButtonContainer'
 import { ContentWrapper } from '../components/ContentWrapper'
 import { PlayerIcon } from '../components/PlayerIcon'
 
-export const Consent = ({ handleNext }: GameStepProps) => {
+export const Consent = ({ nextStep }: GameStepProps) => {
   const {
     step: { activePlayer },
     playerA,
     playerB,
   } = useSelector((state: RootState) => state.game)
 
-  const currentPlayer = activePlayer === 'a' ? playerA : playerB
-  const partnerPlayer = activePlayer === 'a' ? playerB : playerA
+  const currentPlayer = activePlayer === 'player1' ? playerA : playerB
+  const partnerPlayer = activePlayer === 'player1' ? playerB : playerA
 
   const [checked1, setChecked1] = React.useState(false)
   const [checked2, setChecked2] = React.useState(false)
@@ -25,7 +25,7 @@ export const Consent = ({ handleNext }: GameStepProps) => {
   const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
     if (checked1 && checked2) {
-      handleNext()
+      nextStep()
       setChecked1(false)
       setChecked2(false)
     } else {
