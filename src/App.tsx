@@ -10,7 +10,6 @@ import {
 
 import { Home } from './pages/Home'
 import { Streiten } from './layouts/Streiten'
-import { NavigationBar } from './layouts/NavigationBar'
 import { BreakRoom } from './components/BreakRoom'
 import { Test } from './pages/Test'
 
@@ -38,15 +37,13 @@ const withStreitenNavigationHandling =
     return <WrappedComponent {...props} />
   }
 
-const WithNavigationHandling = withStreitenNavigationHandling(NavigationBar)
+const WithNavigationHandling = withStreitenNavigationHandling(Streiten)
 
 const router = createBrowserRouter(
   createRoutesFromElements([
     <Route path="/" element={<Home />} />,
     <Route path="/test" element={<Test />} />,
-    <Route path="/streiten" element={<WithNavigationHandling />}>
-      <Route path="" element={<Streiten />} />,
-    </Route>,
+    <Route path="/streiten" element={<WithNavigationHandling />} />,
     <Route path="pause" element={<BreakRoom />} />,
   ])
 )
@@ -54,9 +51,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <React.StrictMode>
-      <div className="w-full h-screen flex flex-col justify-between overflow-hidden items-center text-center p-4">
-        <RouterProvider router={router} />
-      </div>
+      <RouterProvider router={router} />
     </React.StrictMode>
   )
 }

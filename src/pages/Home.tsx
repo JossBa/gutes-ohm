@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { clearGameState } from '../game/gameSlice'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { Button } from '../components/Button'
+import { PageWrapper } from '../components/PageWrapper'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -16,12 +17,12 @@ export const Home = () => {
   })
 
   return (
-    <>
+    <PageWrapper>
       <div className="slope-element absolute h-screen w-full -z-10 bg-yellowdark "></div>
       <Hero />
       <ButtonContainer>
         <Button title={'Start'} onClick={() => navigate('/streiten')} />
       </ButtonContainer>
-    </>
+    </PageWrapper>
   )
 }

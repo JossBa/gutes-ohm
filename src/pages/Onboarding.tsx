@@ -1,8 +1,8 @@
 import { Header } from '../components/Header'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { Button } from '../components/Button'
-import { ContentWrapper } from '../components/ContentWrapper'
 import { GameStepProps } from './types'
+import { ContentWrapper } from '../components/ContentWrapper'
 
 export const Onboarding = ({ nextStep }: GameStepProps) => {
   return (
