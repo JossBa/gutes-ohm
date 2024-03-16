@@ -9,6 +9,7 @@ export interface GameState {
   currentStepId: number
   solutionsPlayerA: string[]
   solutionsPlayerB: string[]
+  selectedSolutions: string[]
 }
 
 const initialState: GameState = {
@@ -18,6 +19,7 @@ const initialState: GameState = {
   currentStepId: 0,
   solutionsPlayerA: [],
   solutionsPlayerB: [],
+  selectedSolutions: ['Test', 'Bloa', 'some more stuff', 'and more stuff', 'and even more stuff'],
 }
 
 export const gameSlice = createSlice({
@@ -48,6 +50,9 @@ export const gameSlice = createSlice({
       state.solutionsPlayerB =
         action.payload.player === 'player2' ? action.payload.solutions : state.solutionsPlayerB
     },
+    selectSolutions: (state, action: PayloadAction<string[]>) => {
+      state.selectedSolutions = action.payload
+    },
     clearGameState: () => {
       return initialState
     },
@@ -55,7 +60,7 @@ export const gameSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { names, nextStep, previousStep, toStep, clearGameState, solutions } =
+export const { names, nextStep, previousStep, toStep, clearGameState, solutions, selectSolutions } =
   gameSlice.actions
 
 export default gameSlice.reducer

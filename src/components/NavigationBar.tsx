@@ -13,7 +13,7 @@ export const NavigationBar = ({
 }: NavigationBarProps) => {
   return (
     <div className="absolute top-0 left-0 right-0">
-      <div className="px-4 py-3 flex flex-row justify-between items-center max-w-4xl mx-auto">
+      <div className="px-4 py-2 flex flex-row justify-between items-center max-w-4xl mx-auto">
         <button onClick={handlePreviousStep}>
           <img className="p-1" src="/img/back.svg" alt="back-icon" />
         </button>

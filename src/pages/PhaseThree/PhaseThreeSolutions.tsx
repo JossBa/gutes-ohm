@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { solutions } from '../../game/gameSlice'
 import { usePlayers } from '../../hooks/usePlayers'
 import { RootState } from '../../app/store'
+import { scrollToTop } from '../../utils/scrollToTop'
 
 export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   const { activePlayer, currentPlayer } = usePlayers()
@@ -20,13 +21,6 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   const [shouldShowInputField, setShouldShowInputField] = useState<boolean>(false)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const dispatch = useDispatch()
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
 
   const handleAddItem = (item: string) => {
     let list
@@ -69,6 +63,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   }, [inputRef, shouldShowInputField])
 
   const handleSubmitItems = () => {
+    scrollToTop()
     dispatch(solutions({ player: activePlayer, solutions: items }))
     nextStep()
   }

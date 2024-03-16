@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { names } from '../game/gameSlice'
@@ -7,10 +7,12 @@ import { Button } from '../components/Button'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { ContentWrapper } from '../components/ContentWrapper'
 import { GameStepProps } from './types'
+import { scrollToTop } from '../utils/scrollToTop'
 
 export const Names = ({ nextStep }: GameStepProps) => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
   const dispatch = useDispatch()
+  const input1Ref = useRef<HTMLInputElement>(null)
 
   const [player1, setPlayer1] = useState(playerA)
   const [player2, setPlayer2] = useState(playerB)
@@ -28,6 +30,7 @@ export const Names = ({ nextStep }: GameStepProps) => {
       player2 === '' ? setError2(true) : setError2(false)
     }
   }
+
   return (
     <>
       <Header title="Wer seid ihr?" section="Zu Beginn" />
@@ -45,6 +48,7 @@ export const Names = ({ nextStep }: GameStepProps) => {
                     : 'bg-[url("./img/quadrat-outline.svg")]'
                 }  `}
                 type="text"
+                ref={input1Ref}
                 name="player1"
                 required
                 placeholder="Erste Partei"
@@ -55,6 +59,7 @@ export const Names = ({ nextStep }: GameStepProps) => {
                 onFocus={() => {
                   setError1(false)
                 }}
+                onBlur={() => scrollToTop()}
                 autoComplete="off"
               />
               {error1 && (
@@ -78,6 +83,7 @@ export const Names = ({ nextStep }: GameStepProps) => {
                 onChange={(e) => {
                   setPlayer2(e.target.value)
                 }}
+                onBlur={() => scrollToTop()}
                 onFocus={() => {
                   setError2(false)
                 }}

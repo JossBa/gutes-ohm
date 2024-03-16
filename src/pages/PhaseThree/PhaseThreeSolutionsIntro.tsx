@@ -6,7 +6,7 @@ import { ContentWrapper } from '../../components/ContentWrapper'
 import { usePlayers } from '../../hooks/usePlayers'
 
 export const PhaseThreeSolutionsIntro = ({ nextStep }: GameStepProps) => {
-  const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
+  const { currentPlayer } = usePlayers()
 
   return (
     <>
@@ -14,7 +14,7 @@ export const PhaseThreeSolutionsIntro = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline" />
         <p className="font-sourceSerif text-xl font-semibold text-center">
-          {`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${partnerPlayer} auf.`}
+          {`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${currentPlayer} auf.`}
         </p>
       </ContentWrapper>
       <ButtonContainer>

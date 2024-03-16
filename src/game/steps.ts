@@ -20,7 +20,7 @@ const createGameStep = (
 })
 
 export const stepsInGameConfiguration: GameStep[] = [
-  createGameStep('PhaseThreeSolutions', 'player1'),
+  createGameStep('PhaseThreeYourSolutions', 'player1'),
   createGameStep('Onboarding'),
   createGameStep('Names'),
   createGameStep('Consent', 'player1', 'YELLOW'),
