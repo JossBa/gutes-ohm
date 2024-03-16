@@ -1,7 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import { GameStep, getStep, stepsInGameConfiguration } from './steps'
-import { useNavigate } from 'react-router-dom'
+import { GameStep, Player, getStep, stepsInGameConfiguration } from './steps'
 
 export interface GameState {
   playerA: string
@@ -43,6 +42,12 @@ export const gameSlice = createSlice({
       }
       state.step = stepsInGameConfiguration[state.currentStepId]
     },
+    solutions: (state, action: PayloadAction<{ player?: Player; solutions: string[] }>) => {
+      state.solutionsPlayerA =
+        action.payload.player === 'player1' ? action.payload.solutions : state.solutionsPlayerA
+      state.solutionsPlayerB =
+        action.payload.player === 'player2' ? action.payload.solutions : state.solutionsPlayerB
+    },
     clearGameState: () => {
       return initialState
     },
@@ -50,6 +55,7 @@ export const gameSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { names, nextStep, previousStep, toStep, clearGameState } = gameSlice.actions
+export const { names, nextStep, previousStep, toStep, clearGameState, solutions } =
+  gameSlice.actions
 
 export default gameSlice.reducer

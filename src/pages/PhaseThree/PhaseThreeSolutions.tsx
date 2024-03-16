@@ -4,13 +4,22 @@ import { Button } from '../../components/Button'
 import { ButtonContainer } from '../../components/ButtonContainer'
 import { ContentWrapper } from '../../components/ContentWrapper'
 import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { solutions } from '../../game/gameSlice'
+import { usePlayers } from '../../hooks/usePlayers'
+import { RootState } from '../../app/store'
 
 export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
-  const [items, setItems] = useState<string[]>([])
+  const { activePlayer, currentPlayer } = usePlayers()
+  const { solutionsPlayerA, solutionsPlayerB } = useSelector((state: RootState) => state.game)
+  const [items, setItems] = useState<string[]>(
+    activePlayer === 'player1' ? solutionsPlayerA : solutionsPlayerB
+  )
   const [currentItem, setCurrentItem] = useState<string>('')
   const [editItem, setEditItem] = useState<string>('')
   const [shouldShowInputField, setShouldShowInputField] = useState<boolean>(false)
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const dispatch = useDispatch()
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -60,7 +69,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   }, [inputRef, shouldShowInputField])
 
   const handleSubmitItems = () => {
-    // TODO: persist the solutions to the store
+    dispatch(solutions({ player: activePlayer, solutions: items }))
     nextStep()
   }
 
@@ -72,7 +81,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
         <div className="w-full flex flex-col items-center space-y-4">
           <div className="space-y-2 w-full">
             {!shouldShowInputField && items.length === 0 ? (
-              <p>Danke. Nun schreibt gemeinsam die Lösungsoptionen für Mary auf.</p>
+              <p>{`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${currentPlayer} auf.`}</p>
             ) : (
               <>
                 {items.map((item, index) => {
