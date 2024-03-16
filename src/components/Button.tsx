@@ -14,7 +14,7 @@ export const Button = ({ title, onClick, disabled, buttonStyle = 'primary' }: Bu
   return (
     <button
       disabled={disabled}
-      className={`min-w-[220px] h-14 p-4 text-lg font-bold font-josefin uppercase tracking-widest ${styling[buttonStyle]} `}
+      className={`min-w-[220px] min-h-14 p-3 text-lg font-bold font-josefin uppercase tracking-wide ${styling[buttonStyle]} `}
       onClick={onClick}
     >
       {title}

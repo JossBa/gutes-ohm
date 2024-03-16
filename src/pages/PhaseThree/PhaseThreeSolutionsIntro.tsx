@@ -2,19 +2,20 @@ import { GameStepProps } from './../types'
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { ButtonContainer } from '../../components/ButtonContainer'
-import icon from '../../assets/speakbubble.png'
 import { ContentWrapper } from '../../components/ContentWrapper'
+import { usePlayers } from '../../hooks/usePlayers'
 
-export const PhaseOneIntro = ({ nextStep }: GameStepProps) => {
+export const PhaseThreeSolutionsIntro = ({ nextStep }: GameStepProps) => {
+  const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
+
   return (
     <>
-      <Header title={`Worum geht's`} section={'Phase 1/3'}></Header>
+      <Header title={`Erste Lösungen`} section={'Phase 3/3'}></Header>
       <ContentWrapper>
+        <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline" />
         <p className="font-sourceSerif text-xl font-semibold text-center">
-          Teilt eure Sichtweisen miteinander. Das hilft euch dabei, zu verstehen, worum es in eurem
-          Streit geht. Lasst uns Klarheit schaffen!
+          {`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${partnerPlayer} auf.`}
         </p>
-        <img className="inline w-2/3" src={icon} alt="speakbubble" />
       </ContentWrapper>
       <ButtonContainer>
         <Button onClick={nextStep} title={`Los geht's`} />

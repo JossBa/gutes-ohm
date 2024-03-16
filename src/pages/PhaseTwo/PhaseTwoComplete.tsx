@@ -4,18 +4,14 @@ import { ContentWrapper } from '../../components/ContentWrapper'
 import { Header } from '../../components/Header'
 import { GameStepProps } from '../types'
 
-export const PhaseOneComplete = ({ nextStep }: GameStepProps) => {
+export const PhaseTwoComplete = ({ nextStep }: GameStepProps) => {
   return (
     <>
-      <Header title={'Glückwunsch!'} section={'Phase 1/3'} />
+      <Header title={'Glückwunsch!'} section={'Phase 2/3'} />
       <ContentWrapper>
-        <img
-          className="inline w-2/3 sm:w-1/3 md:w-1/4"
-          src={'./img/success-phase-1.png'}
-          alt="speakbubble"
-        />
+        <img className="inline w-2/3" src={'./img/success-phase-2.png'} alt="speakbubble" />
         <p className="font-sourceSerif text-xl font-semibold text-center">
-          Ihr habt das großartig gemeistert! Phase 1 ist abgeschlossen.
+          {`Ihr habt euch echt ins Zeug gelegt!\nPhase 2 ist abgeschlossen.`}
         </p>
       </ContentWrapper>
       <ButtonContainer>

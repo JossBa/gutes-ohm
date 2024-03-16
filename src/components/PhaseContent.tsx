@@ -40,7 +40,7 @@ export const PhaseContent = ({
       <p className="font-sourceSerif text-xl font-semibold text-center">
         {activePlayerInstructions}
       </p>
-      {partnerPlayerInstructions && (
+      {partnerPlayerInstructions && !started && (
         <>
           <PlayerIcon
             player={activePlayer === 'player1' ? 'player2' : 'player1'}
@@ -57,7 +57,7 @@ export const PhaseContent = ({
       <Button
         buttonStyle={started && counting ? 'secondary' : 'primary'}
         disabled={false}
-        title={started ? (counting ? 'Bin schon fertig' : buttonTitle) : 'Start'}
+        title={buttonTitle}
         onClick={!started ? handleStart : nextStep}
       />
     </ButtonContainer>

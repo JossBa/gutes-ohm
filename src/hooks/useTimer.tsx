@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Timer = {
   handleStart: () => void
@@ -11,6 +11,7 @@ export const useTimer = (duration: number): Timer => {
   const [time, setTime] = useState(duration)
   const [counting, setCounting] = useState(false)
   const [started, setStarted] = useState(false)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60)
@@ -23,11 +24,13 @@ export const useTimer = (duration: number): Timer => {
   const handleStart = () => {
     setCounting(true)
     setStarted(!started)
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setTime((prevTime) => {
         const newTime = prevTime - 1
         if (newTime === 0) {
-          clearInterval(interval)
+          if (intervalRef.current !== null) {
+            clearInterval(intervalRef.current)
+          }
           setCounting(false)
         }
         return newTime
@@ -35,6 +38,13 @@ export const useTimer = (duration: number): Timer => {
     }, 1000)
   }
 
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [])
   return {
     handleStart,
     time: formatTime(time),

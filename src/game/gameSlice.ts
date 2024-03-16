@@ -8,6 +8,8 @@ export interface GameState {
   playerB: string
   step: GameStep
   currentStepId: number
+  solutionsPlayerA: string[]
+  solutionsPlayerB: string[]
 }
 
 const initialState: GameState = {
@@ -15,6 +17,8 @@ const initialState: GameState = {
   playerB: '',
   step: getStep(0),
   currentStepId: 0,
+  solutionsPlayerA: [],
+  solutionsPlayerB: [],
 }
 
 export const gameSlice = createSlice({

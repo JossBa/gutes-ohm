@@ -8,28 +8,25 @@ import { toStep } from '../../game/gameSlice'
 import { usePlayers } from '../../hooks/usePlayers'
 import { GameStepProps } from '../types'
 
-export const PhaseOneConfirm = ({ nextStep }: GameStepProps) => {
-  const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
+export const PhaseThreeConfirm = ({ nextStep }: GameStepProps) => {
+  const { activePlayer, currentPlayer } = usePlayers()
   const dispatch = useDispatch()
 
-  const backToStep = activePlayer === 'player1' ? 5 : activePlayer === 'player2' ? 8 : 0
+  const backToStep = activePlayer === 'player1' ? 23 : activePlayer === 'player2' ? 25 : 22
 
   return (
     <>
-      <Header title={currentPlayer} section={'Phase 1/3'}></Header>
+      <Header title={currentPlayer} section={'Phase 3/3'}></Header>
       <ContentWrapper>
         <PlayerIcon player={activePlayer} display="full" />
         <p className="font-sourceSerif text-xl font-semibold text-center italic">
-          {currentPlayer}, hast du das Gefühl, dass {partnerPlayer} dich versteht?
+          {currentPlayer}, wie findest du die Vorschläge?
         </p>
-        <img className="inline w-1/4 mb-4" src={'./img/questionmark.svg'} alt="questionmark" />
+        <img className="inline w-1/3" src={'./img/questionmark.svg'} alt="questionmark" />
       </ContentWrapper>
       <ButtonContainer>
-        <Button
-          onClick={() => dispatch(toStep({ stepId: backToStep }))}
-          title={`Nein, noch was ergänzen`}
-        />
-        <Button onClick={nextStep} title={`Ja, weiter`} />
+        <Button onClick={() => dispatch(toStep({ stepId: backToStep }))} title={`Schon echt gut`} />
+        <Button onClick={nextStep} title={`Noch nicht so passend`} />
       </ButtonContainer>
     </>
   )

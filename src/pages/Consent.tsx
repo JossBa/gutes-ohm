@@ -37,13 +37,7 @@ export const Consent = ({ nextStep }: GameStepProps) => {
       <Header title={`Bereit, ${currentPlayer}?`} section="Zu Beginn" />
       <ContentWrapper>
         <PlayerIcon player={activePlayer} />
-        <p className="font-sourceSerif text-xl font-semibold text-center">
-          Damit ihr den Streit lösen könnt, müsst ihr euch auf diese beiden Aspekte einlassen.
-        </p>
-        <p className="font-sourceSerif text-xl font-semibold">
-          Setz ein Häkchen, wenn du dazu bereit bist.
-        </p>
-        <form className="space-y-6">
+        <form className="space-y-8 px-2">
           <label className="flex items-center space-x-4">
             <input
               type="checkbox"
@@ -55,8 +49,8 @@ export const Consent = ({ nextStep }: GameStepProps) => {
                 setError(false)
               }}
             />
-            <p className="space-y-2 font-sourceSerif text-xl font-semibold italic ml-2">
-              Ich möchte gemeinsam mit <span className="font-bold">{partnerPlayer} </span>eine
+            <p className="space-y-2 font-sourceSerif text-xl font-semibold italic ml-2 text-left">
+              Ich möchte gemeinsam mit <span className="font-extrabold">{partnerPlayer} </span>eine
               Lösung finden.
             </p>
           </label>
@@ -71,15 +65,15 @@ export const Consent = ({ nextStep }: GameStepProps) => {
                 setError(false)
               }}
             />
-            <p className="space-y-2 font-sourceSerif text-xl font-semibold italic ml-2">
-              Ich lasse <span className="font-bold">{partnerPlayer} </span>ausreden und höre aktiv
-              zu.
+            <p className="space-y-2 font-sourceSerif text-xl font-semibold italic ml-2 text-left">
+              Ich lasse <span className="font-extrabold">{partnerPlayer} </span>ausreden und höre
+              aktiv zu.
             </p>
           </label>
+          {error && (
+            <p className="text-red-600 font-medium text-base">Bitte bestätige beide Punkte.</p>
+          )}
         </form>
-        {error && (
-          <p className="text-red-600 font-medium text-base">Bitte bestätige beide Punkte.</p>
-        )}
       </ContentWrapper>
       <ButtonContainer>
         <Button title="Weiter" onClick={(event) => handleSubmit(event)} />

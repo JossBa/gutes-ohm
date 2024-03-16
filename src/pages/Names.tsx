@@ -36,10 +36,10 @@ export const Names = ({ nextStep }: GameStepProps) => {
           <p>Bitte tragt eure Namen ein. So kann OHM euch ideal durch euren Streit steuern.</p>
         </div>
         <form>
-          <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-col space-y-4 ">
             <label>
               <input
-                className={`w-64 h-14 p-4 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${
+                className={`w-64 h-14 p-3 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${
                   player1 !== ''
                     ? 'bg-[url("./img/quadrat-full.svg")]'
                     : 'bg-[url("./img/quadrat-outline.svg")]'
@@ -58,14 +58,14 @@ export const Names = ({ nextStep }: GameStepProps) => {
                 autoComplete="off"
               />
               {error1 && (
-                <p className="text-red-500 font-medium text-base mb-2 pl-2">
+                <p className="text-red-500 font-medium text-base mb-2">
                   Bitte gib hier einen Namen ein.
                 </p>
               )}
             </label>
             <label>
               <input
-                className={`w-64 h-14 p-4 m-2 bg-bluelight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-bluedark bg-no-repeat bg-right bg-origin-content ${
+                className={`w-64 h-14 p-3 m-2 bg-bluelight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-bluedark bg-no-repeat bg-right bg-origin-content ${
                   player2 !== ''
                     ? 'bg-[url("./img/dreieck-full.svg")]'
                     : 'bg-[url("./img/dreieck-outline.svg")]'

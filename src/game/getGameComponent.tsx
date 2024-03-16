@@ -10,6 +10,18 @@ import { Names } from '../pages/Names'
 import { PhaseOneConfirm } from '../pages/PhaseOne/PhaseOneConfirm'
 import { PhaseOneComplete } from '../pages/PhaseOne/PhaseOneComplete'
 import { PhaseOneMoodcheck } from '../pages/PhaseOne/PhaseOneMoodcheck'
+import { PhaseOneFinale } from '../pages/PhaseOne/PhaseOneFinale'
+import { PhaseTwoIntro } from '../pages/PhaseTwo/PhaseTwoIntro'
+import { PhaseTwoSentences } from '../pages/PhaseTwo/PhaseTwoSentences'
+import { PhaseTwoCheck } from '../pages/PhaseTwo/PhaseTwoCheck'
+import { PhaseTwoComplete } from '../pages/PhaseTwo/PhaseTwoComplete'
+import { PhaseTwoMoodcheck } from '../pages/PhaseTwo/PhaseTwoMoodcheck'
+import { PhaseThreeIntro } from '../pages/PhaseThree/PhaseThreeIntro'
+import { PhaseThreeOptions } from '../pages/PhaseThree/PhaseThreeOptions'
+import { PhaseThreeConfirm } from '../pages/PhaseThree/PhaseThreeConfirm'
+import { PhaseThreeAdd } from '../pages/PhaseThree/PhaseThreeAdd'
+import { PhaseThreeSolutionsIntro } from '../pages/PhaseThree/PhaseThreeSolutionsIntro'
+import { PhaseThreeSolutions } from '../pages/PhaseThree/PhaseThreeSolutions'
 
 // Define a mapping of component types to functions that return the corresponding components
 const componentMapping = {
@@ -23,6 +35,18 @@ const componentMapping = {
   PhaseOneComplete,
   GenericError,
   PhaseOneMoodcheck,
+  PhaseOneFinale,
+  PhaseTwoIntro,
+  PhaseTwoSentences,
+  PhaseTwoCheck,
+  PhaseTwoComplete,
+  PhaseTwoMoodcheck,
+  PhaseThreeIntro,
+  PhaseThreeOptions,
+  PhaseThreeConfirm,
+  PhaseThreeAdd,
+  PhaseThreeSolutionsIntro,
+  PhaseThreeSolutions,
 } as const
 
 // Get the union type of valid component types automatically

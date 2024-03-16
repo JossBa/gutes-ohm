@@ -25,7 +25,7 @@ export const Moodcheck = ({
   activePlayerInstructions,
   buttonTitle,
 }: MoodcheckProps) => {
-  const [moodLevel, setMoodLevel] = useState<Mood>('mood-level-2')
+  const [moodLevel, setMoodLevel] = useState<Mood>('mood-level-3')
   const handleMoodChange = (moodLevel: Mood) => {
     setMoodLevel(moodLevel)
   }
@@ -38,11 +38,11 @@ export const Moodcheck = ({
         <p className="font-sourceSerif text-xl font-semibold text-center">
           {activePlayerInstructions}
         </p>
-        <div className="w-full flex flex-col space-y-6">
+        <div className="w-full flex flex-col space-y-4">
           <img
             src={`img/arrow.svg`}
             alt="pfeil in zwei richtungen"
-            className="w-[74px] h-auto self-center mt-20"
+            className="w-[74px] h-auto self-center mt-8"
           />
           <div className="flex flex-row justify-between w-full">
             <RadioButton

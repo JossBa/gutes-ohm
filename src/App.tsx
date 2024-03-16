@@ -44,7 +44,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Home />} />,
     <Route path="/test" element={<Test />} />,
     <Route path="/streiten" element={<WithNavigationHandling />} />,
-    <Route path="pause" element={<BreakRoom />} />,
+    <Route path="/pause" element={<BreakRoom />} />,
   ])
 )
 

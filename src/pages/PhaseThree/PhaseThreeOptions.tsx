@@ -4,15 +4,16 @@ import { PhaseContent } from '../../components/PhaseContent'
 import { AnimatedSlope } from '../../components/AnimatedSlope'
 import { usePlayers } from '../../hooks/usePlayers'
 
-export const PhaseOneExplain = ({ nextStep }: GameStepProps) => {
+export const PhaseThreeOptions = ({ nextStep }: GameStepProps) => {
+  const PHASE_DURATION = 120
   const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
-  const { handleStart, time, counting, started } = useTimer(180)
+  const { handleStart, time, counting, started } = useTimer(PHASE_DURATION)
 
   return (
     <>
-      <AnimatedSlope animate={started} animationDuration={180} />
+      <AnimatedSlope animate={started} animationDuration={PHASE_DURATION} />
       <PhaseContent
-        section="Phase 1/3"
+        section="Phase 3/3"
         activePlayer={activePlayer}
         currentPlayer={currentPlayer}
         partnerPlayer={partnerPlayer}
@@ -21,9 +22,8 @@ export const PhaseOneExplain = ({ nextStep }: GameStepProps) => {
         counting={counting}
         handleStart={handleStart}
         nextStep={nextStep}
-        buttonTitle={started ? (counting ? 'Bin schon fertig' : 'Weiter') : 'Start'}
-        activePlayerInstructions={`Hey, ${currentPlayer}! Teile ${partnerPlayer} in drei Minuten deine Sicht auf den Konflikt mit.`}
-        partnerPlayerInstructions={`${partnerPlayer}, deine Aufgabe ist es, aktiv zuzuhören und nicht zu reden.`}
+        buttonTitle={started ? 'Weiter' : 'Start'}
+        activePlayerInstructions={`Hey, ${currentPlayer}! , nimm dir 2 Minuten Zeit, um Lösungen zu überlegen, die im Interesse von ${partnerPlayer} liegen.`}
       />
     </>
   )

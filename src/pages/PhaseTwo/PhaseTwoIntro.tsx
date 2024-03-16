@@ -2,19 +2,18 @@ import { GameStepProps } from './../types'
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { ButtonContainer } from '../../components/ButtonContainer'
-import icon from '../../assets/speakbubble.png'
 import { ContentWrapper } from '../../components/ContentWrapper'
 
-export const PhaseOneIntro = ({ nextStep }: GameStepProps) => {
+export const PhaseTwoIntro = ({ nextStep }: GameStepProps) => {
   return (
     <>
-      <Header title={`Worum geht's`} section={'Phase 1/3'}></Header>
+      <Header title={`Hinter den Kulissen`} section={'Phase 2/3'}></Header>
       <ContentWrapper>
         <p className="font-sourceSerif text-xl font-semibold text-center">
-          Teilt eure Sichtweisen miteinander. Das hilft euch dabei, zu verstehen, worum es in eurem
-          Streit geht. Lasst uns Klarheit schaffen!
+          Lasst uns herausfinden, was sich hinter eurem Streit verbirgt. Sprecht über eure Gefühle,
+          Bedürfnisse und Interessen!
         </p>
-        <img className="inline w-2/3" src={icon} alt="speakbubble" />
+        <img className="inline w-1/2" src={'./img/rotate.svg'} alt="rotating arrows" />
       </ContentWrapper>
       <ButtonContainer>
         <Button onClick={nextStep} title={`Los geht's`} />

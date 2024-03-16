@@ -50,7 +50,8 @@ export const Streiten = () => {
   const GameComponent = useComponentByType(step.component)
 
   return (
-    <PageWrapper colorChagnge={colorChange}>
+    <PageWrapper>
+      <div className={`${colorChange} absolute inset-0 -z-10`}></div>
       <NavigationBar
         handlePreviousStep={handlePreviousStep}
         handleBreak={handleBreak}

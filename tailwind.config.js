@@ -19,6 +19,13 @@ module.exports = {
         yellowlight: '#FFE062',
       },
     },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+    },
     fontFamily: {
       sourceSerif: ['"Source Serif 4"', 'serif'],
       golos: ['Golos Text', 'sans-serif'],

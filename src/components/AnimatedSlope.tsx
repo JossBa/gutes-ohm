@@ -7,7 +7,7 @@ export const AnimatedSlope = React.memo(
     return (
       <div
         style={durationStyle}
-        className={`bg-background h-screen w-full slope-element-negative absolute -z-10 transition-transform transform ${
+        className={`bg-background h-screen w-full slope-element-negative absolute -z-10 -m-4 transition-transform transform ${
           animate ? ` translate-y-0` : '-translate-y-full'
         } ease-linear`}
       ></div>
