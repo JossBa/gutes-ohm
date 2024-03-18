@@ -60,16 +60,16 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
+          {items.length === 0 ? (
+            <p>{`Wir konnten leider keine Lösungen für ${currentPlayer} finden.`}</p>
+          ) : (
+            <p>{`Hier sind eure Lösungsvorschläge. Entscheidet gemeinsam, welche davon ihr ausprobieren
+            möchtet.`}</p>
+          )}
           <div className="space-y-2 w-full">
-            {items.length === 0 ? (
-              <p>{`Wir konnten leider keine Lösungen für ${currentPlayer} finden.`}</p>
-            ) : (
-              <>
-                {items.map((item, index) => (
-                  <ListItem index={index} item={item} handleSelect={() => handleSelect(item)} />
-                ))}
-              </>
-            )}
+            {items.map((item, index) => (
+              <ListItem index={index} item={item} handleSelect={() => handleSelect(item)} />
+            ))}
           </div>
         </div>
       </ContentWrapper>

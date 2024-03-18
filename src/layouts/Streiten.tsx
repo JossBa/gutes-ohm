@@ -44,6 +44,7 @@ export const Streiten = () => {
   }
 
   useEffect(() => {
+    console.log('step.backgroundColor', step.backgroundColor)
     setColorChange(playerColors[step.backgroundColor ?? 'LIGHT_GREY'])
   }, [step.backgroundColor])
 

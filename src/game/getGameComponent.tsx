@@ -20,10 +20,12 @@ import { PhaseThreeIntro } from '../pages/PhaseThree/PhaseThreeIntro'
 import { PhaseThreeOptions } from '../pages/PhaseThree/PhaseThreeOptions'
 import { PhaseThreeConfirm } from '../pages/PhaseThree/PhaseThreeConfirm'
 import { PhaseThreeAdd } from '../pages/PhaseThree/PhaseThreeAdd'
-import { PhaseThreeSolutionsIntro } from '../pages/PhaseThree/PhaseThreeSolutionsIntro'
 import { PhaseThreeSolutions } from '../pages/PhaseThree/PhaseThreeSolutions'
 import { PhaseThreeSelectSolutions } from '../pages/PhaseThree/PhaseThreeSelectSolutions'
 import { PhaseThreeYourSolutions } from '../pages/PhaseThree/PhaseThreeYourSolutions'
+import { PhaseThreeComplete } from '../pages/PhaseThree/PhaseThreeComplete'
+import { FinaleMoodcheck } from '../pages/Finale/FinaleMoodcheck'
+import { FinalePeace } from '../pages/Finale/FinalePeace'
 // Define a mapping of component types to functions that return the corresponding components
 const componentMapping = {
   Onboarding,
@@ -46,10 +48,12 @@ const componentMapping = {
   PhaseThreeOptions,
   PhaseThreeConfirm,
   PhaseThreeAdd,
-  PhaseThreeSolutionsIntro,
   PhaseThreeSolutions,
   PhaseThreeSelectSolutions,
   PhaseThreeYourSolutions,
+  PhaseThreeComplete,
+  FinaleMoodcheck,
+  FinalePeace,
 } as const
 
 // Get the union type of valid component types automatically
