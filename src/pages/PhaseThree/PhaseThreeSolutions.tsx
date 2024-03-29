@@ -74,28 +74,34 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
-          <div className="space-y-2 w-full">
+          <div className="w-full">
             {!shouldShowInputField && items.length === 0 ? (
               <p>{`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${currentPlayer} auf.`}</p>
             ) : (
-              <>
+              <div className="mx-2 space-y-2">
                 {items.map((item, index) => {
                   return (
-                    <li
-                      key={index}
-                      onClick={() => handleEditItem(item)}
-                      className="text-left break-words bg-white p-2 mx-4 w-fit list-none"
-                    >
-                      {item}
-                    </li>
+                    <div className="flex space-x-1">
+                      <li
+                        key={index}
+                        onClick={() => handleEditItem(item)}
+                        className="text-left break-words  bg-white p-2"
+                      >
+                        {item}
+                      </li>
+                      <img
+                        src={`img/delete.svg`}
+                        alt="delete solution"
+                        className="inline self-start w-6 h-6 cursor-pointer"
+                        onClick={() => handleRemoveItem(item)}
+                      />
+                    </div>
                   )
                 })}
-              </>
+              </div>
             )}
           </div>
         </div>
-      </ContentWrapper>
-      <ButtonContainer>
         <div className="w-full px-4">
           {!shouldShowInputField && (
             <button
@@ -106,31 +112,35 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
             </button>
           )}
           {shouldShowInputField && (
-            <div className="w-full mb-10">
+            <div className="mb-10">
               <label>
-                <textarea
-                  ref={inputRef}
-                  className={`w-full overflow-hidden border-1 border-anthrazit placeholder-opacity-75 placeholder-greymedium`}
-                  name="solution"
-                  required
-                  placeholder="Lösungsvorschlag..."
-                  value={currentItem}
-                  onChange={(e) => {
-                    setCurrentItem(e.target.value)
-                  }}
-                  onKeyDown={handleInputKeyPress}
-                  autoComplete="off"
-                />
-                <div className="flex justify-between text-sm font-josefin uppercase mt-2">
-                  <span onClick={() => handleRemoveItem(currentItem)}>
-                    {currentItem.length > 0 ? 'löschen' : 'abbrechen'}
-                  </span>
-                  <span onClick={() => handleAddItem(currentItem)}>speichern</span>
+                <div className="flex space-x-2">
+                  <textarea
+                    ref={inputRef}
+                    className={`w-full overflow-hidden border-2 border-anthrazit focus:border-bluedark focus:outline-none focus:ring-0 placeholder-opacity-75 placeholder-greymedium`}
+                    name="solution"
+                    required
+                    placeholder="Vorschlag hinzufügen"
+                    value={currentItem}
+                    onChange={(e) => {
+                      setCurrentItem(e.target.value)
+                    }}
+                    onKeyDown={handleInputKeyPress}
+                    autoComplete="off"
+                  />
+                  <img
+                    src={`img/send.svg`}
+                    alt="add solution"
+                    className="inline self-start w-12 h-12 cursor-pointer"
+                    onClick={() => handleAddItem(currentItem)}
+                  />
                 </div>
               </label>
             </div>
           )}
         </div>
+      </ContentWrapper>
+      <ButtonContainer>
         <Button onClick={handleSubmitItems} title={`weiter`} />
       </ButtonContainer>
     </>

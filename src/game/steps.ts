@@ -21,7 +21,8 @@ const createGameStep = (
 })
 
 export const stepsInGameConfiguration: GameStep[] = [
-  createGameStep('FinalePeace'),
+  createGameStep('PhaseThreeSolutions', 'player1'),
+
   createGameStep('Onboarding'),
   createGameStep('Names'),
   createGameStep('Consent', 'player1', 'YELLOW'),
