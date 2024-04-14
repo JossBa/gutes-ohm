@@ -71,7 +71,9 @@ export const Consent = ({ nextStep }: GameStepProps) => {
             </p>
           </label>
           {error && (
-            <p className="text-red-600 font-medium text-base">Bitte bestätige beide Punkte.</p>
+            <p className="text-red-600 font-medium font-josefin text-base">
+              Bitte bestätige beide Punkte.
+            </p>
           )}
         </form>
       </ContentWrapper>

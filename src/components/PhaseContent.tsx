@@ -51,7 +51,7 @@ export const PhaseContent = ({
           </p>
         </>
       )}
-      {started && <h1 className="font-josefin text-8xl p-4 mb-4">{time}</h1>}
+      {started && <h1 className="font-josefin text-6xl p-4 mb-4">{time}</h1>}
     </ContentWrapper>
     <ButtonContainer>
       <Button

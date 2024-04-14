@@ -30,6 +30,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
       list = [...items, item]
     }
     setItems(list)
+    dispatch(solutions({ player: activePlayer, solutions: list }))
     setShouldShowInputField(false)
     setCurrentItem('')
     setEditItem('')
@@ -78,14 +79,14 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
             {!shouldShowInputField && items.length === 0 ? (
               <p>{`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${currentPlayer} auf.`}</p>
             ) : (
-              <div className="mx-2 space-y-2">
+              <div className="mx-2 space-y-2 overflow-auto">
                 {items.map((item, index) => {
                   return (
                     <div className="flex space-x-1">
                       <li
                         key={index}
                         onClick={() => handleEditItem(item)}
-                        className="text-left break-words  bg-white p-2"
+                        className="text-left break-words break-all bg-white p-2"
                       >
                         {item}
                       </li>

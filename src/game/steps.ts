@@ -1,4 +1,3 @@
-import { create } from 'domain'
 import { GameComponentType } from './getGameComponent'
 
 export type Player = 'player1' | 'player2'
@@ -21,8 +20,6 @@ const createGameStep = (
 })
 
 export const stepsInGameConfiguration: GameStep[] = [
-  createGameStep('PhaseThreeSolutions', 'player1'),
-
   createGameStep('Onboarding'),
   createGameStep('Names'),
   createGameStep('Consent', 'player1', 'YELLOW'),

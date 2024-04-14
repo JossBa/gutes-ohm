@@ -25,8 +25,11 @@ export const PhaseThreeConfirm = ({ nextStep }: GameStepProps) => {
         <img className="inline w-1/3" src={'./img/questionmark.svg'} alt="questionmark" />
       </ContentWrapper>
       <ButtonContainer>
-        <Button onClick={() => dispatch(toStep({ stepId: backToStep }))} title={`Schon echt gut`} />
-        <Button onClick={nextStep} title={`Noch nicht so passend`} />
+        <Button
+          onClick={() => dispatch(toStep({ stepId: backToStep }))}
+          title={`Noch nicht so passend`}
+        />
+        <Button onClick={nextStep} title={`Schon echt gut`} />
       </ButtonContainer>
     </>
   )

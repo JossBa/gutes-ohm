@@ -35,12 +35,43 @@ const ListItem = ({
     </li>
   )
 }
+
+const CheckListItem = ({
+  index,
+  item,
+  handleSelect,
+}: {
+  index: number
+  item: string
+  handleSelect: () => void
+}) => {
+  const [selected, setSelected] = useState(false)
+  const onItemPress = () => {
+    setSelected(!selected)
+    handleSelect()
+  }
+  return (
+    <label className="flex items-center space-x-4">
+      <input
+        type="checkbox"
+        className="h-8 w-8 text-anthrazit border-none outline-none focus:ring-0"
+        required
+        checked={selected}
+        onChange={() => {
+          onItemPress()
+        }}
+      />
+      <p className="`text-left break-words p-2 mx-4 w-fit list-none "> {item}</p>
+    </label>
+  )
+}
+
 export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
-  const { activePlayer, currentPlayer } = usePlayers()
   const { solutionsPlayerA, solutionsPlayerB } = useSelector((state: RootState) => state.game)
-  const items = activePlayer === 'player1' ? solutionsPlayerA : solutionsPlayerB
+  const items = [...solutionsPlayerA, ...solutionsPlayerB]
   const [selectedItems, setSelectedItems] = useState<string[]>([])
   const dispatch = useDispatch()
+  const [error, setError] = useState(false)
 
   const handleSelect = (item: string) => {
     if (selectedItems.includes(item)) {
@@ -50,7 +81,18 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
     }
   }
 
+  const anySelected = () => {
+    if (selectedItems.length === 0) {
+      setError(true)
+      return false
+    } else {
+      setError(false)
+      return true
+    }
+  }
+
   const handleSubmit = () => {
+    if (!anySelected()) return
     dispatch(selectSolutions(selectedItems))
     nextStep()
   }
@@ -61,17 +103,20 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
           {items.length === 0 ? (
-            <p>{`Wir konnten leider keine Lösungen für ${currentPlayer} finden.`}</p>
+            <p>{`Wir konnten leider keine Lösungsvorschläge finden.`}</p>
           ) : (
             <p>{`Hier sind eure Lösungsvorschläge. Entscheidet gemeinsam, welche davon ihr ausprobieren
             möchtet.`}</p>
           )}
           <div className="space-y-2 w-full">
             {items.map((item, index) => (
-              <ListItem index={index} item={item} handleSelect={() => handleSelect(item)} />
+              <CheckListItem index={index} item={item} handleSelect={() => handleSelect(item)} />
             ))}
           </div>
         </div>
+        {error && (
+          <p className="text-red-500">Bitte wähle mindestens einen Lösungsvorschlag aus.</p>
+        )}
       </ContentWrapper>
       <ButtonContainer>
         <Button title="Wählen" onClick={handleSubmit} />

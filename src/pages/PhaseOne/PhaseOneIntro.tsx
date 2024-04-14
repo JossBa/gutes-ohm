@@ -10,11 +10,11 @@ export const PhaseOneIntro = ({ nextStep }: GameStepProps) => {
     <>
       <Header title={`Worum geht's`} section={'Phase 1/3'}></Header>
       <ContentWrapper>
-        <p className="font-sourceSerif text-xl font-semibold text-center">
+        <p className="font-sourceSerif text-lg font-medium text-center">
           Teilt eure Sichtweisen miteinander. Das hilft euch dabei, zu verstehen, worum es in eurem
           Streit geht. Lasst uns Klarheit schaffen!
         </p>
-        <img className="inline w-2/3" src={icon} alt="speakbubble" />
+        <img className="inline w-3/5 md:w-1/3" src={icon} alt="speakbubble" />
       </ContentWrapper>
       <ButtonContainer>
         <Button onClick={nextStep} title={`Los geht's`} />

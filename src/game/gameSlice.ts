@@ -13,13 +13,13 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  playerA: '',
-  playerB: '',
-  step: getStep(0),
-  currentStepId: 0,
+  playerA: 'Nimet',
+  playerB: 'Josephine',
+  step: getStep(22),
+  currentStepId: 22,
   solutionsPlayerA: [],
   solutionsPlayerB: [],
-  selectedSolutions: ['Test', 'Bloa', 'some more stuff', 'and more stuff', 'and even more stuff'],
+  selectedSolutions: [],
 }
 
 export const gameSlice = createSlice({

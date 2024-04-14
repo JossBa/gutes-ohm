@@ -5,7 +5,7 @@ import { AnimatedSlope } from '../../components/AnimatedSlope'
 import { usePlayers } from '../../hooks/usePlayers'
 
 export const PhaseThreeAdd = ({ nextStep }: GameStepProps) => {
-  const PHASE_DURATION = 120
+  const PHASE_DURATION = 60
   const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
   const { handleStart, time, counting, started } = useTimer(PHASE_DURATION)
 
