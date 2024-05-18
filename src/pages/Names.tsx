@@ -8,6 +8,7 @@ import { ButtonContainer } from '../components/ButtonContainer'
 import { ContentWrapper } from '../components/ContentWrapper'
 import { GameStepProps } from './types'
 import { scrollToTop } from '../utils/scrollToTop'
+import { BaseText } from '../components/BaseText'
 
 export const Names = ({ nextStep }: GameStepProps) => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
@@ -35,9 +36,9 @@ export const Names = ({ nextStep }: GameStepProps) => {
     <>
       <Header title="Wer seid ihr?" section="Zu Beginn" />
       <ContentWrapper>
-        <div className="text-center font-sourceSerif text-xl font-semibold">
-          <p>Bitte tragt eure Namen ein. So kann OHM euch ideal durch euren Streit steuern.</p>
-        </div>
+        <BaseText
+          text={'Bitte tragt eure Namen ein. So kann OHM euch ideal durch euren Streit steuern.'}
+        />
         <form>
           <div className="flex flex-col space-y-4 ">
             <label>

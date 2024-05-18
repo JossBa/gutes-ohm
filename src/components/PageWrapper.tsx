@@ -40,7 +40,7 @@ export const PageWrapper = ({
 
   return (
     <div
-      className={`w-full min-h-screen flex flex-col max-w-4xl justify-between items-center text-center p-4 mx-auto box-border`}
+      className={`w-full min-h-screen flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border`}
     >
       {props.children}
     </div>

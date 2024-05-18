@@ -15,11 +15,20 @@ export interface GameState {
 const initialState: GameState = {
   playerA: 'Nimet',
   playerB: 'Josephine',
-  step: getStep(22),
-  currentStepId: 22,
-  solutionsPlayerA: [],
-  solutionsPlayerB: [],
-  selectedSolutions: [],
+  step: getStep(0),
+  currentStepId: 0,
+  solutionsPlayerA: [
+    'Mary haut nicht mehr zu Mary haut nicht mehr zu Mary haut nicht mehr zu',
+    'Mary haut nicht mehr zu',
+  ],
+  solutionsPlayerB: [
+    'Mary haut nicht mehr zu',
+    'Mary haut nicht mehr zu Mary haut nicht mehr zuMary haut nicht mehr zu',
+  ],
+  selectedSolutions: [
+    'Mary haut nicht mehr zu Mary haut nicht mehr zu Mary haut nicht mehr zu',
+    'Mary haut nicht mehr zu',
+  ],
 }
 
 export const gameSlice = createSlice({

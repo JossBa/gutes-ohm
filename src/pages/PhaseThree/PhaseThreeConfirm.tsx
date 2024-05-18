@@ -7,6 +7,7 @@ import { PlayerIcon } from '../../components/PlayerIcon'
 import { toStep } from '../../game/gameSlice'
 import { usePlayers } from '../../hooks/usePlayers'
 import { GameStepProps } from '../types'
+import { BaseText } from '../../components/BaseText'
 
 export const PhaseThreeConfirm = ({ nextStep }: GameStepProps) => {
   const { activePlayer, currentPlayer } = usePlayers()
@@ -19,9 +20,7 @@ export const PhaseThreeConfirm = ({ nextStep }: GameStepProps) => {
       <Header title={currentPlayer} section={'Phase 3/3'}></Header>
       <ContentWrapper>
         <PlayerIcon player={activePlayer} display="full" />
-        <p className="font-sourceSerif text-xl font-semibold text-center italic">
-          {currentPlayer}, wie findest du die Vorschläge?
-        </p>
+        <BaseText text={`${currentPlayer}, wie findest du die Vorschläge?`} italic="italic" />
         <img className="inline w-1/3" src={'./img/questionmark.svg'} alt="questionmark" />
       </ContentWrapper>
       <ButtonContainer>

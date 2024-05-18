@@ -5,6 +5,7 @@ import { ButtonContainer } from '../../components/ButtonContainer'
 import { ContentWrapper } from '../../components/ContentWrapper'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
+import { BaseText } from '../../components/BaseText'
 
 export const PhaseThreeYourSolutions = ({ nextStep }: GameStepProps) => {
   const { selectedSolutions } = useSelector((state: RootState) => state.game)
@@ -15,11 +16,12 @@ export const PhaseThreeYourSolutions = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
-          <div className="space-y-2 w-full">
+          <div className="space-y-4 w-full font-sourceSerif">
             {selectedSolutions.length === 0 ? (
               <p>{`Wir konnten leider keine Lösungen finden.`}</p>
             ) : (
               <>
+                <BaseText text={`Yeah!\nDas sind eure individuelle Lösungen:`} />
                 {selectedSolutions.map((item, index) => {
                   return (
                     <li

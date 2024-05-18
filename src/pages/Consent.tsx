@@ -41,7 +41,7 @@ export const Consent = ({ nextStep }: GameStepProps) => {
           <label className="flex items-center space-x-4">
             <input
               type="checkbox"
-              className="h-8 w-8 text-anthrazit border-none outline-none focus:ring-0"
+              className="h-7 w-7 text-anthrazit border-none outline-none focus:ring-0"
               required
               checked={checked1}
               onChange={() => {
@@ -49,7 +49,7 @@ export const Consent = ({ nextStep }: GameStepProps) => {
                 setError(false)
               }}
             />
-            <p className="space-y-2 font-sourceSerif text-xl font-semibold italic ml-2 text-left">
+            <p className="space-y-2 font-sourceSerif text-lg font-semibold italic ml-2 text-left">
               Ich möchte gemeinsam mit <span className="font-extrabold">{partnerPlayer} </span>eine
               Lösung finden.
             </p>
@@ -57,7 +57,7 @@ export const Consent = ({ nextStep }: GameStepProps) => {
           <label className="flex items-center space-x-4">
             <input
               type="checkbox"
-              className="h-8 w-8 text-anthrazit border-none outline-none focus:ring-0"
+              className="h-7 w-7 text-anthrazit border-none outline-none focus:ring-0"
               required
               checked={checked2}
               onChange={() => {
@@ -65,7 +65,7 @@ export const Consent = ({ nextStep }: GameStepProps) => {
                 setError(false)
               }}
             />
-            <p className="space-y-2 font-sourceSerif text-xl font-semibold italic ml-2 text-left">
+            <p className="space-y-2 font-sourceSerif text-lg font-semibold italic ml-2 text-left">
               Ich lasse <span className="font-extrabold">{partnerPlayer} </span>ausreden und höre
               aktiv zu.
             </p>

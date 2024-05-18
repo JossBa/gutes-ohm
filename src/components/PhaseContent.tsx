@@ -1,4 +1,5 @@
 import { GameStepProps } from '../pages/types'
+import { BaseText } from './BaseText'
 import { Button } from './Button'
 import { ButtonContainer } from './ButtonContainer'
 import { ContentWrapper } from './ContentWrapper'
@@ -37,18 +38,14 @@ export const PhaseContent = ({
     <Header title={currentPlayer ?? ''} section={section} />
     <ContentWrapper>
       <PlayerIcon player={activePlayer} display="full" />
-      <p className="font-sourceSerif text-xl font-semibold text-center">
-        {activePlayerInstructions}
-      </p>
+      <BaseText text={activePlayerInstructions} />
       {partnerPlayerInstructions && !started && (
         <>
           <PlayerIcon
             player={activePlayer === 'player1' ? 'player2' : 'player1'}
             display="outline"
           />
-          <p className="font-sourceSerif text-xl font-semibold text-center italic">
-            {partnerPlayerInstructions}
-          </p>
+          <BaseText text={partnerPlayerInstructions} italic="italic" />
         </>
       )}
       {started && <h1 className="font-josefin text-6xl p-4 mb-4">{time}</h1>}

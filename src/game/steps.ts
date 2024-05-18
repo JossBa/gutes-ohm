@@ -20,6 +20,7 @@ const createGameStep = (
 })
 
 export const stepsInGameConfiguration: GameStep[] = [
+  // Onboarding
   createGameStep('Onboarding'),
   createGameStep('Names'),
   createGameStep('Consent', 'player1', 'YELLOW'),
@@ -44,6 +45,7 @@ export const stepsInGameConfiguration: GameStep[] = [
   createGameStep('PhaseTwoComplete', undefined, 'GRADIENT'),
   createGameStep('PhaseTwoMoodcheck', 'player2', 'BLUE'),
   createGameStep('PhaseTwoMoodcheck', 'player1', 'YELLOW'),
+
   // Phase 3
   createGameStep('PhaseThreeIntro'),
   createGameStep('PhaseThreeOptions', 'player1', 'YELLOW'),
@@ -54,10 +56,11 @@ export const stepsInGameConfiguration: GameStep[] = [
   createGameStep('PhaseThreeConfirm', 'player1', 'YELLOW'),
   createGameStep('PhaseThreeAdd', 'player1', 'YELLOW'),
   createGameStep('PhaseThreeSolutions', 'player1'),
+
   // Final Solutions
   createGameStep('PhaseThreeSelectSolutions'),
+  createGameStep('PhaseThreeYourSolutions'),
   createGameStep('PhaseThreeComplete', undefined, 'GRADIENT'),
-
   createGameStep('FinaleMoodcheck', 'player2', 'BLUE'),
   createGameStep('FinaleMoodcheck', 'player1', 'YELLOW'),
   createGameStep('FinalePeace'),

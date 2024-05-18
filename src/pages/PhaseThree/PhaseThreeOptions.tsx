@@ -23,7 +23,7 @@ export const PhaseThreeOptions = ({ nextStep }: GameStepProps) => {
         handleStart={handleStart}
         nextStep={nextStep}
         buttonTitle={started ? 'Weiter' : 'Start'}
-        activePlayerInstructions={`Hey, ${currentPlayer}! , nimm dir 2 Minuten Zeit, um Lösungen zu überlegen, die im Interesse von ${partnerPlayer} liegen.`}
+        activePlayerInstructions={`Hey, ${currentPlayer}, nimm dir 2 Minuten Zeit, um Lösungen zu überlegen, die im Interesse von ${partnerPlayer} liegen.`}
       />
     </>
   )

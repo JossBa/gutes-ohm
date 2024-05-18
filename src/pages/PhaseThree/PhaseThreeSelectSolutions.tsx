@@ -51,17 +51,16 @@ const CheckListItem = ({
     handleSelect()
   }
   return (
-    <label className="flex items-center space-x-4">
+    <label htmlFor={`checkbox_${index}`} className="flex items-top space-x-4" key={index}>
       <input
+        id={`checkbox_${index}`}
         type="checkbox"
-        className="h-8 w-8 text-anthrazit border-none outline-none focus:ring-0"
+        className="h-7 w-7 text-anthrazit border-none outline-none focus:ring-0"
         required
         checked={selected}
-        onChange={() => {
-          onItemPress()
-        }}
+        onChange={onItemPress}
       />
-      <p className="`text-left break-words p-2 mx-4 w-fit list-none "> {item}</p>
+      <p className="text-left break-words w-fit list-none font-sourceSerif"> {item}</p>
     </label>
   )
 }
@@ -101,14 +100,14 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
       <Header title={`Erste Lösungen`} section={'Phase 3/3'}></Header>
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
-        <div className="w-full flex flex-col items-center space-y-4">
+        <div className="w-full flex flex-col items-center space-y-6 font-sourceSerif">
           {items.length === 0 ? (
             <p>{`Wir konnten leider keine Lösungsvorschläge finden.`}</p>
           ) : (
             <p>{`Hier sind eure Lösungsvorschläge. Entscheidet gemeinsam, welche davon ihr ausprobieren
             möchtet.`}</p>
           )}
-          <div className="space-y-2 w-full">
+          <div className="space-y-4 w-full px-4">
             {items.map((item, index) => (
               <CheckListItem index={index} item={item} handleSelect={() => handleSelect(item)} />
             ))}
