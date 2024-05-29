@@ -3,12 +3,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { previousStep } from '../game/gameSlice'
 interface IHeader {
-  title: string
-  section: string
+  title?: string
+  section?: string
   shouldOnlyShowBackButton?: boolean
   handlePrevious?: () => void
+  hideTitle?: boolean
 }
-export const Header = ({ title, section, shouldOnlyShowBackButton, handlePrevious }: IHeader) => {
+export const Header = ({
+  title,
+  section,
+  shouldOnlyShowBackButton,
+  handlePrevious,
+  hideTitle,
+}: IHeader) => {
   const { currentStepId } = useSelector((state: RootState) => state.game)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -48,13 +55,15 @@ export const Header = ({ title, section, shouldOnlyShowBackButton, handlePreviou
           </div>
         )}
       </div>
-      <div className="w-full sticky pb-2 mb-2 top-14 bg-inherit">
-        <h2 className="font-josefin text-sm text-center font-semibold uppercase">{section}</h2>
-        <h1 className="font-josefin text-2xl text-center font-bold uppercase leading-normal">
-          {title}
-        </h1>
-        <hr className="my-1 mx-auto border-anthrazit" />
-      </div>
+      {!hideTitle && (
+        <div className="w-full sticky pb-2 mb-2 top-14 bg-inherit">
+          <h2 className="font-josefin text-sm text-center font-semibold uppercase">{section}</h2>
+          <h1 className="font-josefin text-2xl text-center font-bold uppercase leading-normal">
+            {title}
+          </h1>
+          <hr className="my-1 mx-auto border-anthrazit" />
+        </div>
+      )}
     </div>
   )
 }

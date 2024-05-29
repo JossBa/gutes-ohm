@@ -64,6 +64,9 @@ export const stepsInGameConfiguration: GameStep[] = [
   createGameStep('FinaleMoodcheck', 'player2', 'BLUE'),
   createGameStep('FinaleMoodcheck', 'player1', 'YELLOW'),
   createGameStep('FinalePeace'),
+  createGameStep('FinaleSuccess'),
+  createGameStep('FinaleSeeYouLater'),
+  createGameStep('FinaleSupport'),
 ]
 
 export const getStep = (id: number): GameStep => {

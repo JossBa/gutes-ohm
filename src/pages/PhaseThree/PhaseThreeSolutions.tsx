@@ -5,53 +5,74 @@ import { ButtonContainer } from '../../components/ButtonContainer'
 import { ContentWrapper } from '../../components/ContentWrapper'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { solutions } from '../../game/gameSlice'
+import { Solution, solutions } from '../../game/gameSlice'
 import { usePlayers } from '../../hooks/usePlayers'
 import { RootState } from '../../app/store'
 import { scrollToTop } from '../../utils/scrollToTop'
+import { v4 as uuidv4 } from 'uuid'
 
 export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
+  console.log('PhaseThreeSolutions rerender')
   const { activePlayer, currentPlayer } = usePlayers()
-  const { solutionsPlayerA, solutionsPlayerB } = useSelector((state: RootState) => state.game)
-  const [items, setItems] = useState<string[]>(
-    activePlayer === 'player1' ? solutionsPlayerA : solutionsPlayerB
+  const { allSolutions } = useSelector((state: RootState) => state.game)
+  // the current player solutions
+  const [playerSolutions, setPlayerSolutions] = useState<Solution[]>(
+    allSolutions.filter((s) => s.player === activePlayer)
   )
-  const [currentItem, setCurrentItem] = useState<string>('')
-  const [editItem, setEditItem] = useState<string>('')
+
+  const [currentProposal, setCurrentProposal] = useState<string>('')
+  const [editMode, setEditMode] = useState<boolean>(false)
+  const [editIndex, setEditIndex] = useState<string>('')
   const [shouldShowInputField, setShouldShowInputField] = useState<boolean>(false)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const dispatch = useDispatch()
 
-  const handleAddItem = (item: string) => {
-    let list
-    if (editItem) {
-      list = items.map((i) => (i === editItem ? item : i))
+  const handleAddItem = (proposedSolution: string) => {
+    if (editMode) {
+      const updatedSolution: Solution = {
+        id: editIndex,
+        player: activePlayer!,
+        solution: proposedSolution,
+      }
+      setPlayerSolutions(playerSolutions.map((i) => (i.id === editIndex ? updatedSolution : i)))
+      dispatch(
+        solutions({
+          solutions: allSolutions.map((i) => (i.id === editIndex ? updatedSolution : i)),
+        })
+      )
+      setEditMode(false)
+      setEditIndex('')
     } else {
-      list = [...items, item]
+      const newSolution: Solution = {
+        id: uuidv4(),
+        player: activePlayer!,
+        solution: proposedSolution,
+      }
+
+      setPlayerSolutions([...playerSolutions, newSolution])
+      dispatch(solutions({ solutions: [...allSolutions, newSolution] }))
     }
-    setItems(list)
-    dispatch(solutions({ player: activePlayer, solutions: list }))
     setShouldShowInputField(false)
-    setCurrentItem('')
-    setEditItem('')
+    setCurrentProposal('')
   }
 
-  const handleRemoveItem = (item: string) => {
-    setItems(items.filter((i) => i !== item))
+  const handleRemoveItem = (index: string) => {
+    setPlayerSolutions(playerSolutions.filter((i) => i.id !== index))
     setShouldShowInputField(false)
-    setCurrentItem('')
+    setCurrentProposal('')
   }
 
   const handleInputKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      handleAddItem(currentItem)
+      handleAddItem(currentProposal)
       setShouldShowInputField(false)
     }
   }
 
-  const handleEditItem = (item: string) => {
-    setCurrentItem(item)
-    setEditItem(item)
+  const handleEditItem = (index: string) => {
+    setEditMode(true)
+    setEditIndex(index)
+    setCurrentProposal(allSolutions.find((i) => i.id === index)?.solution ?? '')
     setShouldShowInputField(true)
   }
 
@@ -65,7 +86,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
 
   const handleSubmitItems = () => {
     scrollToTop()
-    dispatch(solutions({ player: activePlayer, solutions: items }))
+    dispatch(solutions({ solutions: allSolutions }))
     nextStep()
   }
 
@@ -76,25 +97,24 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
           <div className="w-full">
-            {!shouldShowInputField && items.length === 0 ? (
-              <p>{`Danke. Nun schreibt gemeinsam die Lösungsoptionen für ${currentPlayer} auf.`}</p>
+            {!shouldShowInputField && playerSolutions.length === 0 ? (
+              <p>{`Danke! Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}</p>
             ) : (
               <div className="mx-2 space-y-2 overflow-auto">
-                {items.map((item, index) => {
+                {playerSolutions.map((item) => {
                   return (
-                    <div className="flex space-x-1">
+                    <div key={item.id} className="flex space-x-1">
                       <li
-                        key={index}
-                        onClick={() => handleEditItem(item)}
+                        onClick={() => handleEditItem(item.id)}
                         className="text-left break-words break-all bg-white p-2"
                       >
-                        {item}
+                        {item.solution}
                       </li>
                       <img
                         src={`img/delete.svg`}
                         alt="delete solution"
                         className="inline self-start w-6 h-6 cursor-pointer"
-                        onClick={() => handleRemoveItem(item)}
+                        onClick={() => handleRemoveItem(item.id)}
                       />
                     </div>
                   )
@@ -122,9 +142,9 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
                     name="solution"
                     required
                     placeholder="Vorschlag hinzufügen"
-                    value={currentItem}
+                    value={currentProposal}
                     onChange={(e) => {
-                      setCurrentItem(e.target.value)
+                      setCurrentProposal(e.target.value)
                     }}
                     onKeyDown={handleInputKeyPress}
                     autoComplete="off"
@@ -133,7 +153,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
                     src={`img/send.svg`}
                     alt="add solution"
                     className="inline self-start w-12 h-12 cursor-pointer"
-                    onClick={() => handleAddItem(currentItem)}
+                    onClick={() => handleAddItem(currentProposal)}
                   />
                 </div>
               </label>

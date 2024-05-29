@@ -3,38 +3,10 @@ import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { ButtonContainer } from '../../components/ButtonContainer'
 import { ContentWrapper } from '../../components/ContentWrapper'
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { usePlayers } from '../../hooks/usePlayers'
 import { RootState } from '../../app/store'
-import { selectSolutions } from '../../game/gameSlice'
-
-const ListItem = ({
-  index,
-  item,
-  handleSelect,
-}: {
-  index: number
-  item: string
-  handleSelect: () => void
-}) => {
-  const [selected, setSelected] = useState(false)
-  const onItemPress = () => {
-    setSelected(!selected)
-    handleSelect()
-  }
-  return (
-    <li
-      key={index}
-      onClick={onItemPress}
-      className={`text-left break-words p-2 mx-4 w-fit list-none ${
-        selected ? 'bg-yellowlight' : 'bg-white'
-      }`}
-    >
-      {item}
-    </li>
-  )
-}
+import { Solution, selectSolutions } from '../../game/gameSlice'
 
 const CheckListItem = ({
   index,
@@ -42,13 +14,13 @@ const CheckListItem = ({
   handleSelect,
 }: {
   index: number
-  item: string
-  handleSelect: () => void
+  item: Solution
+  handleSelect: (item: Solution) => void
 }) => {
   const [selected, setSelected] = useState(false)
   const onItemPress = () => {
     setSelected(!selected)
-    handleSelect()
+    handleSelect(item)
   }
   return (
     <label htmlFor={`checkbox_${index}`} className="flex items-top space-x-4" key={index}>
@@ -60,38 +32,25 @@ const CheckListItem = ({
         checked={selected}
         onChange={onItemPress}
       />
-      <p className="text-left break-words w-fit list-none font-sourceSerif"> {item}</p>
+      <p className="text-left break-words w-fit list-none font-sourceSerif"> {item.solution}</p>
     </label>
   )
 }
-
 export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
-  const { solutionsPlayerA, solutionsPlayerB } = useSelector((state: RootState) => state.game)
-  const items = [...solutionsPlayerA, ...solutionsPlayerB]
-  const [selectedItems, setSelectedItems] = useState<string[]>([])
+  const { allSolutions } = useSelector((state: RootState) => state.game)
+  const [selectedItems, setSelectedItems] = useState<Solution[]>([])
   const dispatch = useDispatch()
-  const [error, setError] = useState(false)
+  const [error] = useState(false)
 
-  const handleSelect = (item: string) => {
-    if (selectedItems.includes(item)) {
-      setSelectedItems(selectedItems.filter((i) => i !== item))
-    } else {
+  const handleSelect = (item: Solution) => {
+    if (!selectedItems.find((i) => i.id === item.id)) {
       setSelectedItems([...selectedItems, item])
-    }
-  }
-
-  const anySelected = () => {
-    if (selectedItems.length === 0) {
-      setError(true)
-      return false
     } else {
-      setError(false)
-      return true
+      setSelectedItems(selectedItems.filter((i) => i.id !== item.id))
     }
   }
 
   const handleSubmit = () => {
-    if (!anySelected()) return
     dispatch(selectSolutions(selectedItems))
     nextStep()
   }
@@ -101,15 +60,15 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-6 font-sourceSerif">
-          {items.length === 0 ? (
+          {allSolutions.length === 0 ? (
             <p>{`Wir konnten leider keine Lösungsvorschläge finden.`}</p>
           ) : (
             <p>{`Hier sind eure Lösungsvorschläge. Entscheidet gemeinsam, welche davon ihr ausprobieren
             möchtet.`}</p>
           )}
           <div className="space-y-4 w-full px-4">
-            {items.map((item, index) => (
-              <CheckListItem index={index} item={item} handleSelect={() => handleSelect(item)} />
+            {allSolutions.map((item, index) => (
+              <CheckListItem key={index} index={index} item={item} handleSelect={handleSelect} />
             ))}
           </div>
         </div>

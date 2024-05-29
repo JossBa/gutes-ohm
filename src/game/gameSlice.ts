@@ -2,14 +2,18 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import { GameStep, Player, getStep, stepsInGameConfiguration } from './steps'
 
+export type Solution = {
+  id: string
+  player: Player
+  solution: string
+}
 export interface GameState {
   playerA: string
   playerB: string
   step: GameStep
   currentStepId: number
-  solutionsPlayerA: string[]
-  solutionsPlayerB: string[]
-  selectedSolutions: string[]
+  allSolutions: Solution[]
+  selectSolutions: Solution[]
 }
 
 const initialState: GameState = {
@@ -17,18 +21,8 @@ const initialState: GameState = {
   playerB: 'Josephine',
   step: getStep(0),
   currentStepId: 0,
-  solutionsPlayerA: [
-    'Mary haut nicht mehr zu Mary haut nicht mehr zu Mary haut nicht mehr zu',
-    'Mary haut nicht mehr zu',
-  ],
-  solutionsPlayerB: [
-    'Mary haut nicht mehr zu',
-    'Mary haut nicht mehr zu Mary haut nicht mehr zuMary haut nicht mehr zu',
-  ],
-  selectedSolutions: [
-    'Mary haut nicht mehr zu Mary haut nicht mehr zu Mary haut nicht mehr zu',
-    'Mary haut nicht mehr zu',
-  ],
+  allSolutions: [],
+  selectSolutions: [],
 }
 
 export const gameSlice = createSlice({
@@ -53,14 +47,13 @@ export const gameSlice = createSlice({
       }
       state.step = stepsInGameConfiguration[state.currentStepId]
     },
-    solutions: (state, action: PayloadAction<{ player?: Player; solutions: string[] }>) => {
-      state.solutionsPlayerA =
-        action.payload.player === 'player1' ? action.payload.solutions : state.solutionsPlayerA
-      state.solutionsPlayerB =
-        action.payload.player === 'player2' ? action.payload.solutions : state.solutionsPlayerB
+    solutions: (state, action: PayloadAction<{ solutions: Solution[] }>) => {
+      state.allSolutions = action.payload.solutions
+      console.log('allSolutions', state.allSolutions)
     },
-    selectSolutions: (state, action: PayloadAction<string[]>) => {
-      state.selectedSolutions = action.payload
+    selectSolutions: (state, action: PayloadAction<Solution[]>) => {
+      state.selectSolutions = action.payload
+      console.log('selectSolutions', state.selectSolutions)
     },
     clearGameState: () => {
       return initialState
