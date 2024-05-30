@@ -15,9 +15,15 @@ const withStreitenNavigationHandling =
   <P extends Record<string, unknown>>(WrappedComponent: React.ComponentType<P>) =>
   (props: P) => {
     const navigate = useNavigate()
+    console.log('test1')
     useEffect(() => {
+      console.log('test2')
+
       const handleNavigation = (event: PopStateEvent) => {
+        console.log('test3')
+
         event.preventDefault()
+        console.log('test4')
         const stopGame = window.confirm('Möchtest du den Prozess wirklich beenden?')
         if (stopGame) {
           navigate('/')

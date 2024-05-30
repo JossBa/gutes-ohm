@@ -2,6 +2,11 @@ import { RootState } from '../app/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { previousStep } from '../game/gameSlice'
+import Modal from 'react-modal'
+import { useState } from 'react'
+import { Button } from './Button'
+import { ButtonContainer } from './ButtonContainer'
+
 interface IHeader {
   title?: string
   section?: string
@@ -19,6 +24,19 @@ export const Header = ({
   const { currentStepId } = useSelector((state: RootState) => state.game)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [showModal, setShowModal] = useState(false)
+
+  const handleExit = () => {
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
+  const confirmExit = () => {
+    navigate('/')
+  }
 
   const handlePreviousStep = () => {
     if (currentStepId === 0) {
@@ -32,9 +50,6 @@ export const Header = ({
     navigate('/pause')
   }
 
-  const handleExit = () => {
-    navigate('/')
-  }
   return (
     <div
       id="navigation-bar"
@@ -62,6 +77,24 @@ export const Header = ({
             {title}
           </h1>
           <hr className="my-1 mx-auto border-anthrazit" />
+        </div>
+      )}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white px-8 pt-8 pb-1 shadow-lg">
+            <h2 className="font-josefin text-xl text-center font-bold uppercase my-3">
+              Schade, dass ihr schon geht!
+            </h2>
+            <p>Seid ihr sicher, dass ihr den Prozess beenden möchtet?</p>
+            <p>
+              Euer Fortschritt wird leider nicht gespeichtert, aber wir arbeiten bereits an einer
+              Lösung.
+            </p>
+            <ButtonContainer>
+              <Button onClick={confirmExit} title="OK" />
+              <Button onClick={closeModal} buttonStyle="secondary" title="Abbrechen" />
+            </ButtonContainer>
+          </div>
         </div>
       )}
     </div>

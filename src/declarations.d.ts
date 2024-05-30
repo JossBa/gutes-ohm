@@ -5,3 +5,4 @@ declare module 'canvas-confetti' {
   }
   export = confetti
 }
+declare module 'react-modal'

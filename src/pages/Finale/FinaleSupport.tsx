@@ -6,6 +6,9 @@ import { ContentWrapper } from '../../components/ContentWrapper'
 import { Header } from '../../components/Header'
 import { GameStepProps } from '../types'
 
+const feedbackEmailBody =
+  'Ich habe OHM genutzt und möchte euch Feedback geben! %0D%0A %0D%0A (1) Auf einer Skala von 1 (niemals) bis 10 (auf jeden Fall), wie wahrscheinlich ist es, dass du OHM weiterempfiehlst? Trage die entsprechende Zahl als Antwort ein. %0D%0A %0D%0A Antwort:%0D%0A %0D%0A (2) Was hat dir besonders bei der Verwendung von OHM gefallen? %0D%0A %0D%0A Antwort: %0D%0A %0D%0A (3) Was hat dir bei der Verwendung von OHM am wenigsten gefallen? %0D%0A %0D%0A Antwort:'
+
 export const FinaleSupport = ({ nextStep }: GameStepProps) => {
   const navigate = useNavigate()
 
@@ -29,7 +32,7 @@ export const FinaleSupport = ({ nextStep }: GameStepProps) => {
       <ButtonContainer>
         <Link
           className={`min-w-[220px] p-3 text-base font-medium font-josefin uppercase tracking-wide bg-anthrazit text-slate-50`}
-          to={`mailto:hallo@gutes-ohm.com?subject=Feedback zur OHM App&body=Hallo liebes OHM Team! Ich möchte Euch folgendes Feedback zur App geben:`}
+          to={`mailto:hallo@gutes-ohm.com?subject=Feedback geben&body=${feedbackEmailBody}`}
           target="_blank"
           rel="noreferrer"
         >

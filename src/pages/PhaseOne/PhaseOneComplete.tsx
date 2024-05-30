@@ -10,7 +10,7 @@ export const PhaseOneComplete = ({ nextStep }: GameStepProps) => {
       <Header title={'Glückwunsch!'} section={'Phase 1/3'} />
       <ContentWrapper>
         <img
-          className="inline w-2/3 sm:w-1/3 md:w-1/4"
+          className="inline sm:w-1/3 md:w-1/4 w-2/3"
           src={'./img/success-phase-1.png'}
           alt="speakbubble"
         />

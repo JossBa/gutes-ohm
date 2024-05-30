@@ -6,6 +6,9 @@ import { ContentWrapper } from '../../components/ContentWrapper'
 import { Header } from '../../components/Header'
 import { GameStepProps } from '../types'
 
+const mediationEmailBody =
+  'Ich habe Interesse an einer Mediation und möchte einen Termin vereinbaren. Bitte kontaktiert mich unter: %0D%0A %0D%0A E-Mail: %0D%0A %0D%0A Telefon:'
+
 export const FinaleSeeYouLater = ({ nextStep }: GameStepProps) => {
   return (
     <>
@@ -27,9 +30,7 @@ export const FinaleSeeYouLater = ({ nextStep }: GameStepProps) => {
         <Button onClick={nextStep} title={`OHM unterstützen`} />
         <Link
           className={`min-w-[220px] p-3 text-base font-medium font-josefin uppercase tracking-wide 'bg-transparent border-2 border-anthrazit text-anthrazit`}
-          to={
-            'mailto:hallo@gutes-ohm.com?subject=Mediation buchen&body=Ich möchte gerne eine Mediation buchen. Bitte kontaktiert mich.'
-          }
+          to={`mailto:hallo@gutes-ohm.com?subject=Mediation buchen&body=${mediationEmailBody}`}
         >
           Mediation buchen
         </Link>

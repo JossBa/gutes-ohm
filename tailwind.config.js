@@ -3,6 +3,12 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'quadrat-outline': "url('/public/img/quadrat-outline.svg')",
+        'quadrat-full': "url('/public/img/quadrat-full.svg')",
+        'dreieck-outline': "url('/public/img/dreieck-outline.svg')",
+        'dreieck-full': "url('/public/img/dreieck-full.svg')",
+      },
       transitionDuration: {
         10000: '10000ms',
         60000: '60000ms',

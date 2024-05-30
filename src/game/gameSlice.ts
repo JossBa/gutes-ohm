@@ -17,8 +17,8 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  playerA: 'Nimet',
-  playerB: 'Josephine',
+  playerA: '',
+  playerB: '',
   step: getStep(0),
   currentStepId: 0,
   allSolutions: [],
