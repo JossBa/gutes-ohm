@@ -30,6 +30,7 @@ export const PhaseOneConfirm = ({ nextStep }: GameStepProps) => {
         <Button
           onClick={() => dispatch(toStep({ stepId: backToStep }))}
           title={`Nein, noch was ergänzen`}
+          buttonStyle="secondary"
         />
         <Button onClick={nextStep} title={`Ja, weiter`} />
       </ButtonContainer>

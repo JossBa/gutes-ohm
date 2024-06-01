@@ -19,7 +19,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   const [playerSolutions, setPlayerSolutions] = useState<Solution[]>(
     allSolutions.filter((s) => s.player === activePlayer)
   )
-
+  const [error, setError] = useState<boolean>(false)
   const [currentProposal, setCurrentProposal] = useState<string>('')
   const [editMode, setEditMode] = useState<boolean>(false)
   const [editIndex, setEditIndex] = useState<string>('')
@@ -58,6 +58,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
 
   const handleRemoveItem = (index: string) => {
     setPlayerSolutions(playerSolutions.filter((i) => i.id !== index))
+    dispatch(solutions({ solutions: allSolutions.filter((i) => i.id !== index) }))
     setShouldShowInputField(false)
     setCurrentProposal('')
   }
@@ -78,6 +79,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
 
   useEffect(() => {
     if (shouldShowInputField && inputRef.current) {
+      setError(false)
       inputRef.current.focus()
     } else {
       scrollToTop()
@@ -86,8 +88,13 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
 
   const handleSubmitItems = () => {
     scrollToTop()
-    dispatch(solutions({ solutions: allSolutions }))
-    nextStep()
+    if (playerSolutions.length === 0) {
+      setError(true)
+    } else {
+      setError(false)
+      dispatch(solutions({ solutions: allSolutions }))
+      nextStep()
+    }
   }
 
   return (
@@ -97,9 +104,11 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
           <div className="w-full">
-            {!shouldShowInputField && playerSolutions.length === 0 ? (
-              <p>{`Danke! Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}</p>
-            ) : (
+            {!shouldShowInputField && playerSolutions.length === 0 && (
+              <p>{`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}</p>
+            )}
+
+            {playerSolutions.length > 0 && (
               <div className="mx-2 space-y-2 overflow-auto">
                 {playerSolutions.map((item) => {
                   return (
@@ -123,17 +132,19 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
             )}
           </div>
         </div>
-        <div className="w-full px-4">
+        <div className="w-full px-4 flex justify-center">
           {!shouldShowInputField && (
-            <button
-              className={`min-w-[220px] p-3 text-lg font-medium font-sourceSerif  bg-transparent border-2 border-anthrazit text-anthrazit`}
-              onClick={() => setShouldShowInputField(true)}
-            >
-              + Vorschlag hinzufügen
-            </button>
+            <div className="space-y-3 md:w-1/2 w-full">
+              <button
+                className={`min-w-[220px] p-3 text-lg font-medium font-sourceSerif  bg-transparent border-2 border-anthrazit text-anthrazit`}
+                onClick={() => setShouldShowInputField(true)}
+              >
+                + Vorschlag hinzufügen
+              </button>
+            </div>
           )}
           {shouldShowInputField && (
-            <div className="mb-10">
+            <div className="md:w-1/2 w-full mb-10">
               <label>
                 <div className="flex space-x-2">
                   <textarea
@@ -160,6 +171,13 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
             </div>
           )}
         </div>
+        {error && (
+          <div className="w-full flex flex-col items-center">
+            <p className="text-red-500 md:w-1/2 w-full">
+              Versucht mindestens einen Lösungsvorschlag zu finden bevor ihr weiter macht.
+            </p>
+          </div>
+        )}
       </ContentWrapper>
       <ButtonContainer>
         <Button onClick={handleSubmitItems} title={`weiter`} />

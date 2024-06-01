@@ -33,7 +33,7 @@ export const PhaseTwoSentences = ({ nextStep }: GameStepProps) => {
         {counterRef.current < 0 ? (
           <>
             <p className="font-sourceSerif text-xl font-semibold text-center">
-              {`${currentPlayer} , du bekommst gleich drei Sätze nacheinander angezeigt. Vervollständige
+              {`${currentPlayer}, du bekommst gleich drei Sätze nacheinander angezeigt. Vervollständige
           sie bitte!`}
             </p>
 
@@ -46,13 +46,27 @@ export const PhaseTwoSentences = ({ nextStep }: GameStepProps) => {
             </p>
           </>
         ) : (
-          <p className="font-sourceSerif text-xl font-semibold text-center italic whitespace-pre">
-            {currentSentence}
-          </p>
+          <>
+            <p className="font-sourceSerif text-xl font-semibold text-center">{`${currentPlayer}, vervollständige den ${
+              counterRef.current + 1
+            }. Satz:`}</p>
+            <p className="font-sourceSerif text-xl font-semibold text-center italic whitespace-pre">
+              {currentSentence}
+            </p>
+          </>
         )}
       </ContentWrapper>
       <ButtonContainer>
-        <Button title={'Start'} onClick={handleNextSentence} />
+        <Button
+          title={
+            counterRef.current >= 0
+              ? counterRef.current >= 2
+                ? 'Weiter'
+                : 'Nächster Satz'
+              : 'Start'
+          }
+          onClick={handleNextSentence}
+        />
       </ButtonContainer>
     </>
   )

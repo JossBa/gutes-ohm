@@ -19,11 +19,11 @@ export const PhaseTwoFinale = ({ nextStep }: GameStepProps) => {
         <p className="font-sourceSerif text-xl font-semibold text-center">
           Seid ihr bereit für die nächste Phase?
         </p>
-        <img className="inline w-2/3" src={'./img/next-phase-3.png'} alt="speakbubble" />
+        <img className="inline md:w-1/3 w-2/3" src={'./img/next-phase-3.png'} alt="speakbubble" />
       </ContentWrapper>
       <ButtonContainer>
-        <Button onClick={handleBreak} title={`Pause`} />
-        <Button onClick={nextStep} title={`Los geht's`} />
+        <Button onClick={handleBreak} title={`Pause`} buttonStyle="secondary" />
+        <Button onClick={nextStep} title={`Bereit!`} />
       </ButtonContainer>
     </>
   )
