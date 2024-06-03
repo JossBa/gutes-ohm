@@ -9,7 +9,7 @@ import { BaseText } from '../../components/BaseText'
 const Checkbox = ({ title }: { title: string }) => {
   const [checked, setChecked] = useState(false)
   return (
-    <label className="flex items-center space-x-4">
+    <label className="flex flex-row">
       <input
         type="checkbox"
         className="h-7 w-7 text-anthrazit border-none ring-offset-0 outline-none focus:ring-0 focus:ring-transparent"
@@ -19,9 +19,7 @@ const Checkbox = ({ title }: { title: string }) => {
           setChecked(!checked)
         }}
       />
-      <p className="space-y-2 font-sourceSerif text-lg font-medium italic ml-2 text-left">
-        {title}
-      </p>
+      <p className="font-sourceSerif text-lg font-medium italic ml-2 text-left">{title}</p>
     </label>
   )
 }
@@ -34,10 +32,12 @@ export const FinalePeace = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <BaseText text={'Mit welchem Friedensritual wollt ihr eure Lösung feiern?'} />
-        <div className="space-y-2 px-4">
-          {rituals.map((ritual) => (
-            <Checkbox title={ritual} />
-          ))}
+        <div className="flex flex-col items-center">
+          <div className="md:space-y-3 space-y-2">
+            {rituals.map((ritual) => (
+              <Checkbox title={ritual} />
+            ))}
+          </div>
         </div>
       </ContentWrapper>
       <ButtonContainer>

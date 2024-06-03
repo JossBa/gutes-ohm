@@ -10,6 +10,7 @@ import { usePlayers } from '../../hooks/usePlayers'
 import { RootState } from '../../app/store'
 import { scrollToTop } from '../../utils/scrollToTop'
 import { v4 as uuidv4 } from 'uuid'
+import { BaseText } from '../../components/BaseText'
 
 export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   console.log('PhaseThreeSolutions rerender')
@@ -103,10 +104,10 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
-          <div className="w-full">
-            {!shouldShowInputField && playerSolutions.length === 0 && (
-              <p>{`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}</p>
-            )}
+          <div className="w-full space-y-4">
+            <BaseText
+              text={`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}
+            />
 
             {playerSolutions.length > 0 && (
               <div className="mx-2 space-y-2 overflow-auto">
@@ -136,7 +137,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
           {!shouldShowInputField && (
             <div className="space-y-3 md:w-1/2 w-full">
               <button
-                className={`min-w-[220px] p-3 text-lg font-medium font-sourceSerif  bg-transparent border-2 border-anthrazit text-anthrazit`}
+                className={`min-w-[218px] p-3 text-lg font-medium font-sourceSerif bg-transparent border-2 border-anthrazit text-anthrazit`}
                 onClick={() => setShouldShowInputField(true)}
               >
                 + Vorschlag hinzufügen

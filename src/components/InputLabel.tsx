@@ -20,7 +20,7 @@ export const InputLabel = ({
   return (
     <label>
       <input
-        className={`w-64 h-14 p-4 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${playerIcon}`}
+        className={`w-64 h-14 p-4 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-transat font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${playerIcon}`}
         type="text"
         name={inputName}
         required
@@ -35,7 +35,7 @@ export const InputLabel = ({
         autoComplete="off"
       />
       {error && (
-        <p className="text-red-500 font-medium text-base mb-2 pl-2">
+        <p className="animate-shake animate-once text-red-600 font-medium text-base mb-2 pl-2">
           Bitte gib hier einen Namen ein.
         </p>
       )}

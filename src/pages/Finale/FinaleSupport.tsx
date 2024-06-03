@@ -31,7 +31,7 @@ export const FinaleSupport = ({ nextStep }: GameStepProps) => {
       </ContentWrapper>
       <ButtonContainer>
         <Link
-          className={`min-w-[220px] p-3 text-base font-medium font-josefin uppercase tracking-wide bg-anthrazit text-slate-50`}
+          className={`min-w-[220px] p-3 text-base font-medium font-transat uppercase tracking-wide bg-anthrazit text-slate-50`}
           to={`mailto:hallo@gutes-ohm.com?subject=Feedback geben&body=${feedbackEmailBody}`}
           target="_blank"
           rel="noreferrer"
@@ -39,7 +39,7 @@ export const FinaleSupport = ({ nextStep }: GameStepProps) => {
           Feedback geben
         </Link>
         <Link
-          className={`min-w-[220px] p-3 text-base font-medium font-josefin uppercase tracking-wide  bg-anthrazit text-slate-50`}
+          className={`min-w-[220px] p-3 text-base font-medium font-transat uppercase tracking-wide  bg-anthrazit text-slate-50`}
           to="https://www.gofundme.com/f/app-fur-moderne-streitlosung?utm_campaign=p_lico+share-sheet&utm_medium=copy_link&utm_source=customer"
           target="_blank"
           rel="noreferrer"

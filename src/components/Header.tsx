@@ -67,8 +67,8 @@ export const Header = React.memo(
         </div>
         {!hideTitle && (
           <div className="w-full sticky pb-2 mb-2 top-14 bg-inherit">
-            <h2 className="font-josefin text-sm text-center font-semibold uppercase">{section}</h2>
-            <h1 className="font-josefin text-2xl text-center font-bold uppercase leading-normal">
+            <h2 className="font-transat text-sm text-center font-semibold uppercase">{section}</h2>
+            <h1 className="font-transat text-2xl text-center font-bold uppercase leading-normal">
               {title}
             </h1>
             <hr className="my-1 mx-auto border-anthrazit" />
@@ -77,7 +77,7 @@ export const Header = React.memo(
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-white px-8 pt-8 pb-1 shadow-lg">
-              <h2 className="font-josefin text-xl text-center font-bold uppercase my-3">
+              <h2 className="font-transat text-xl text-center font-bold uppercase my-3">
                 Schade, dass ihr schon geht!
               </h2>
               <p>Seid ihr sicher, dass ihr den Prozess beenden möchtet?</p>

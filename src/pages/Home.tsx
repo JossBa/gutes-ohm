@@ -23,7 +23,7 @@ export const Home = () => {
       <ButtonContainer>
         <Button title={'Start'} onClick={() => navigate('/streiten')} />
         <Link
-          className={`min-w-[220px] p-3 text-base font-medium font-josefin uppercase tracking-wide 'bg-transparent border-2 border-anthrazit text-anthrazit`}
+          className={`min-w-[218px] p-3 text-base font-bold font-transat uppercase tracking-widest border-2 bg-transparent border-anthrazit text-anthrazit`}
           to="https://www.gutes-ohm.com/#ohm"
           target="_blank"
           rel="noreferrer"

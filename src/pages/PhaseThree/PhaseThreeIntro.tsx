@@ -16,7 +16,7 @@ export const PhaseThreeIntro = ({ nextStep }: GameStepProps) => {
           }
         />
 
-        <img className="inline w-1/2" src={'./img/solutions.png'} alt="solutions" />
+        <img className="inline md:w-1/3 w-1/2" src={'./img/solutions.png'} alt="solutions" />
       </ContentWrapper>
       <ButtonContainer>
         <Button onClick={nextStep} title={`Los geht's`} />

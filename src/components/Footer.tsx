@@ -7,7 +7,7 @@ export const Footer = () => {
         target="_blank"
         rel="noreferrer"
         to="https://www.gutes-ohm.com/impressum"
-        className="underline text-black text-sm font-josefin uppercase"
+        className="underline text-black text-sm font-transat uppercase"
       >
         Impressum & Datenschutz
       </Link>

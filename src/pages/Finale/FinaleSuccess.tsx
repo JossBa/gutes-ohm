@@ -6,7 +6,10 @@ import { useCallback, useEffect, useRef } from 'react'
 
 export const FinaleSuccess = ({ nextStep }: GameStepProps) => {
   const animationStarted = useRef(false)
-  const next = useCallback(() => nextStep, [nextStep])
+  // const next = useCallback(() => {
+  //   console.log('triggering next step', nextStep)
+  //   return nextStep
+  // }, [nextStep])
   const triggerConfetti = useCallback(() => {
     animationStarted.current = true
 
@@ -27,18 +30,22 @@ export const FinaleSuccess = ({ nextStep }: GameStepProps) => {
   }, [animationStarted])
 
   useEffect(() => {
-    if (animationStarted.current) return
+    if (animationStarted.current) {
+      console.log('animation already started')
+      return
+    }
     triggerConfetti().then(() => {
-      next()
+      console.log('animation finished', nextStep)
+      nextStep()
     })
-  }, [triggerConfetti, next, animationStarted])
+  }, [triggerConfetti, nextStep, animationStarted])
 
   return (
     <>
       <Header hideTitle />
       <ContentWrapper>
         <div className="mt-48">
-          <h1 className="font-josefin text-2xl text-center font-bold uppercase leading-normal">
+          <h1 className="font-transat text-2xl text-center font-bold uppercase leading-normal">
             Glückwunsch, Ihr habt es geschafft!
           </h1>
         </div>

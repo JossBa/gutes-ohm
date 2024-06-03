@@ -35,8 +35,8 @@ module.exports = {
     fontFamily: {
       sourceSerif: ['"Source Serif 4"', 'serif'],
       golos: ['Golos Text', 'sans-serif'],
-      josefin: ['Josefin Sans', 'sans-serif'],
+      transat: ['Transat', 'Helvetica', 'Arial', 'sans-serif'],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-animated')],
 }
