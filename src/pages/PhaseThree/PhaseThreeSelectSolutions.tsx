@@ -40,9 +40,10 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
   const { allSolutions } = useSelector((state: RootState) => state.game)
   const [selectedItems, setSelectedItems] = useState<Solution[]>([])
   const dispatch = useDispatch()
-  const [error] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleSelect = (item: Solution) => {
+    setError(false)
     if (!selectedItems.find((i) => i.id === item.id)) {
       setSelectedItems([...selectedItems, item])
     } else {
@@ -51,8 +52,12 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
   }
 
   const handleSubmit = () => {
-    dispatch(selectSolutions(selectedItems))
-    nextStep()
+    if (selectedItems.length === 0) {
+      setError(true)
+    } else {
+      dispatch(selectSolutions(selectedItems))
+      nextStep()
+    }
   }
   return (
     <>
@@ -73,7 +78,9 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
           </div>
         </div>
         {error && (
-          <p className="text-red-500">Bitte wähle mindestens einen Lösungsvorschlag aus.</p>
+          <p className="animate-shake animate-once text-red-600 text-base mb-2 pl-2">
+            Bitte wählt mindestens einen Lösungsvorschlag aus bevor ihr weiter macht.
+          </p>
         )}
       </ContentWrapper>
       <ButtonContainer>

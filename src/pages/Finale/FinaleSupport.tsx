@@ -21,7 +21,6 @@ export const FinaleSupport = ({ nextStep }: GameStepProps) => {
           italic="italic"
           text={
             <>
-              <br />
               → Sag es weiter <br />
               → Gib uns Feedback <br />
               → Finanzieller Support <br />
