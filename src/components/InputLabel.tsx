@@ -1,28 +1,46 @@
 type InputLabelProps = {
-  playerIcon: string
+  player: 'player1' | 'player2'
   playerName: string
   setPlayer: (player: string) => void
-  error: boolean
+  isError: boolean
   setError: (error: boolean) => void
-  placeholder: string
-  inputName: string
+  scrollToTop: () => void
+}
+
+const playerSettings = {
+  player1: {
+    iconPrimary: 'bg-quadrat-full',
+    iconSecondary: 'bg-quadrat-outline',
+    placeholder: 'Erste Partei',
+    color: 'bg-yellowlight',
+    focus: 'focus:ring-yellowdark',
+  },
+  player2: {
+    iconPrimary: 'bg-dreieck-full',
+    iconSecondary: 'bg-dreieck-outline',
+    placeholder: 'Zweite Partei',
+    color: 'bg-bluelight',
+    focus: 'focus:ring-bluedark',
+  },
 }
 
 export const InputLabel = ({
-  placeholder,
-  inputName,
-  playerIcon,
+  player,
   playerName,
   setPlayer,
-  error,
+  isError,
   setError,
+  scrollToTop,
 }: InputLabelProps) => {
+  const { color, iconPrimary, iconSecondary, placeholder, focus } = playerSettings[player]
   return (
     <label>
       <input
-        className={`w-64 h-14 p-4 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-transat font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${playerIcon}`}
+        className={`${color} w-64 h-14 p-4 m-2 border-none placeholder-opacity-75 placeholder-greymedium font-transat font-semibold text-l uppercase focus:outline-none focus:ring ${focus} bg-no-repeat bg-right bg-origin-content ${
+          playerName !== '' ? iconPrimary : iconSecondary
+        } `}
         type="text"
-        name={inputName}
+        name={player}
         required
         placeholder={placeholder}
         value={playerName}
@@ -32,10 +50,11 @@ export const InputLabel = ({
         onFocus={() => {
           setError(false)
         }}
+        onBlur={scrollToTop}
         autoComplete="off"
       />
-      {error && (
-        <p className="animate-shake animate-once text-red-600 font-medium text-base mb-2 pl-2">
+      {isError && (
+        <p className="animate-shake animate-once text-red-600 text-base mb-2 pl-2">
           Bitte gib hier einen Namen ein.
         </p>
       )}

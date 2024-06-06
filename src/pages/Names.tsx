@@ -9,6 +9,7 @@ import { ContentWrapper } from '../components/ContentWrapper'
 import { GameStepProps } from './types'
 import { scrollToTop } from '../utils/scrollToTop'
 import { BaseText } from '../components/BaseText'
+import { InputLabel } from '../components/InputLabel'
 
 export const Names = ({ nextStep }: GameStepProps) => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
@@ -41,57 +42,22 @@ export const Names = ({ nextStep }: GameStepProps) => {
         />
         <form>
           <div className="flex flex-col space-y-4 ">
-            <label>
-              <input
-                className={`w-64 h-14 p-3 m-2 bg-yellowlight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-yellowdark bg-no-repeat bg-right bg-origin-content ${
-                  player1 !== '' ? 'bg-quadrat-full' : 'bg-quadrat-outline'
-                }  `}
-                type="text"
-                ref={input1Ref}
-                name="player1"
-                required
-                placeholder="Erste Partei"
-                value={player1}
-                onChange={(e) => {
-                  setPlayer1(e.target.value)
-                }}
-                onFocus={() => {
-                  setError1(false)
-                }}
-                onBlur={() => scrollToTop()}
-                autoComplete="off"
-              />
-              {error1 && (
-                <p className="text-red-500 font-golos font-medium text-base mb-2">
-                  Bitte gib hier einen Namen ein.
-                </p>
-              )}
-            </label>
-            <label>
-              <input
-                className={`w-64 h-14 p-3 m-2 bg-bluelight border-none placeholder-opacity-75 placeholder-greymedium font-josefin font-semibold text-l uppercase focus:outline-none focus:ring focus:ring-bluedark bg-no-repeat bg-right bg-origin-content ${
-                  player2 !== '' ? 'bg-dreieck-full' : 'bg-dreieck-outline'
-                }  `}
-                type="text"
-                name="player2"
-                required
-                placeholder="Zweite Partei"
-                value={player2}
-                onChange={(e) => {
-                  setPlayer2(e.target.value)
-                }}
-                onBlur={() => scrollToTop()}
-                onFocus={() => {
-                  setError2(false)
-                }}
-                autoComplete="off"
-              />
-              {error2 && (
-                <p className="text-red-500 font-medium text-base mb-2 pl-2">
-                  Bitte gib hier einen Namen ein.
-                </p>
-              )}
-            </label>
+            <InputLabel
+              player="player1"
+              playerName={player1}
+              setPlayer={setPlayer1}
+              isError={error1}
+              setError={setError1}
+              scrollToTop={scrollToTop}
+            />
+            <InputLabel
+              player="player2"
+              playerName={player2}
+              setPlayer={setPlayer2}
+              isError={error2}
+              setError={setError2}
+              scrollToTop={scrollToTop}
+            />
           </div>
         </form>
       </ContentWrapper>

@@ -13,7 +13,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { BaseText } from '../../components/BaseText'
 
 export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
-  console.log('PhaseThreeSolutions rerender')
   const { activePlayer, currentPlayer } = usePlayers()
   const { allSolutions } = useSelector((state: RootState) => state.game)
   // the current player solutions
@@ -29,29 +28,30 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
   const dispatch = useDispatch()
 
   const handleAddItem = (proposedSolution: string) => {
-    if (editMode) {
-      const updatedSolution: Solution = {
-        id: editIndex,
-        player: activePlayer!,
-        solution: proposedSolution,
+    if (proposedSolution !== '') {
+      if (editMode) {
+        const updatedSolution: Solution = {
+          id: editIndex,
+          player: activePlayer!,
+          solution: proposedSolution,
+        }
+        setPlayerSolutions(playerSolutions.map((i) => (i.id === editIndex ? updatedSolution : i)))
+        dispatch(
+          solutions({
+            solutions: allSolutions.map((i) => (i.id === editIndex ? updatedSolution : i)),
+          })
+        )
+        setEditMode(false)
+        setEditIndex('')
+      } else {
+        const newSolution: Solution = {
+          id: uuidv4(),
+          player: activePlayer!,
+          solution: proposedSolution,
+        }
+        setPlayerSolutions([...playerSolutions, newSolution])
+        dispatch(solutions({ solutions: [...allSolutions, newSolution] }))
       }
-      setPlayerSolutions(playerSolutions.map((i) => (i.id === editIndex ? updatedSolution : i)))
-      dispatch(
-        solutions({
-          solutions: allSolutions.map((i) => (i.id === editIndex ? updatedSolution : i)),
-        })
-      )
-      setEditMode(false)
-      setEditIndex('')
-    } else {
-      const newSolution: Solution = {
-        id: uuidv4(),
-        player: activePlayer!,
-        solution: proposedSolution,
-      }
-
-      setPlayerSolutions([...playerSolutions, newSolution])
-      dispatch(solutions({ solutions: [...allSolutions, newSolution] }))
     }
     setShouldShowInputField(false)
     setCurrentProposal('')
@@ -146,8 +146,8 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
           )}
           {shouldShowInputField && (
             <div className="md:w-1/2 w-full mb-10">
-              <label>
-                <div className="flex space-x-2">
+              <div className="flex space-x-2">
+                <label>
                   <textarea
                     ref={inputRef}
                     className={`w-full overflow-hidden border-2 border-anthrazit focus:border-bluedark focus:outline-none focus:ring-0 placeholder-opacity-75 placeholder-greymedium`}
@@ -161,20 +161,22 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
                     onKeyDown={handleInputKeyPress}
                     autoComplete="off"
                   />
-                  <img
-                    src={`img/send.svg`}
-                    alt="add solution"
-                    className="inline self-start w-12 h-12 cursor-pointer"
-                    onClick={() => handleAddItem(currentProposal)}
-                  />
-                </div>
-              </label>
+                </label>
+                <img
+                  src={`img/send.svg`}
+                  alt="add solution"
+                  className="inline self-start w-12 h-12 cursor-pointer"
+                  onClick={() => {
+                    handleAddItem(currentProposal)
+                  }}
+                />
+              </div>
             </div>
           )}
         </div>
         {error && (
           <div className="w-full flex flex-col items-center">
-            <p className="text-red-500 md:w-1/2 w-full">
+            <p className="animate-shake animate-once text-red-600 text-base mb-2 pl-2 md:w-1/2 w-full">
               Versucht mindestens einen Lösungsvorschlag zu finden bevor ihr weiter macht.
             </p>
           </div>
