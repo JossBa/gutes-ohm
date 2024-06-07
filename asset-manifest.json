@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/gutes-ohm/static/css/main.300dbccb.css",
+    "main.js": "/gutes-ohm/static/js/main.58b87de6.js",
+    "static/js/787.4b3b2199.chunk.js": "/gutes-ohm/static/js/787.4b3b2199.chunk.js",
+    "static/media/TextBold.woff2": "/gutes-ohm/static/media/TextBold.90c83e6422f0a69a30f6.woff2",
+    "static/media/TextStandard.woff2": "/gutes-ohm/static/media/TextStandard.e41e159ec7b6730da69f.woff2",
+    "static/media/TextBoldOblique.woff2": "/gutes-ohm/static/media/TextBoldOblique.65bcb788257c505965a3.woff2",
+    "static/media/TextStandardOblique.woff2": "/gutes-ohm/static/media/TextStandardOblique.0223f37a7d4c4faebed7.woff2",
+    "static/media/TextMedium.woff2": "/gutes-ohm/static/media/TextMedium.6b39eb6dca4b2631ea5e.woff2",
+    "static/media/TextMediumOblique.woff2": "/gutes-ohm/static/media/TextMediumOblique.28256623150adddbdce2.woff2",
+    "static/media/TextBlackOblique.woff2": "/gutes-ohm/static/media/TextBlackOblique.1b5e0fb7f6055dab875b.woff2",
+    "static/media/TextBlack.woff2": "/gutes-ohm/static/media/TextBlack.c1278a9ffa3ab4b44510.woff2",
+    "index.html": "/gutes-ohm/index.html",
+    "static/media/dreieck-full.svg": "/gutes-ohm/static/media/dreieck-full.f66e6d5ef2855b078db2.svg",
+    "static/media/quadrat-full.svg": "/gutes-ohm/static/media/quadrat-full.e89ff38a3bdfb6a5edcc.svg",
+    "static/media/dreieck-outline.svg": "/gutes-ohm/static/media/dreieck-outline.3d9813b864abefcd13da.svg",
+    "static/media/quadrat-outline.svg": "/gutes-ohm/static/media/quadrat-outline.3235ccf1070155e6b963.svg",
+    "main.300dbccb.css.map": "/gutes-ohm/static/css/main.300dbccb.css.map",
+    "main.58b87de6.js.map": "/gutes-ohm/static/js/main.58b87de6.js.map",
+    "787.4b3b2199.chunk.js.map": "/gutes-ohm/static/js/787.4b3b2199.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.300dbccb.css",
+    "static/js/main.58b87de6.js"
+  ]
+}
