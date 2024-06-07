@@ -2,7 +2,7 @@
   "name": "gutes-ohm",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jossba.github.io/gutes-ohm",
+  "homepage": "https://jossba.github.io/gutes-ohm/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
