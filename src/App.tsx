@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
@@ -43,7 +43,7 @@ const withStreitenNavigationHandling =
 
 const WithNavigationHandling = withStreitenNavigationHandling(Streiten)
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements([
     <Route path="/" element={<Home />} />,
     <Route path="/streiten" element={<WithNavigationHandling />} />,
