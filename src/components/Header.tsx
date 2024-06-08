@@ -48,7 +48,7 @@ export const Header = React.memo(
     return (
       <div
         id="navigation-bar"
-        className={`sticky top-0 left-0 right-0 pt-2 z-50 flex flex-col justify-between w-full bg-transparent`}
+        className={`top-0 left-0 right-0 pt-2 z-50 flex flex-col justify-between w-full bg-transparent`}
       >
         <div className="flex justify-between w-full">
           <button onClick={handlePrevious ? handlePrevious : handlePreviousStep}>
@@ -66,7 +66,7 @@ export const Header = React.memo(
           )}
         </div>
         {!hideTitle && (
-          <div className="w-full sticky pb-2 mb-2 top-14 bg-inherit">
+          <div className="w-full pb-2 mb-2 top-14 bg-inherit">
             <h2 className="font-transat text-sm text-center font-semibold uppercase">{section}</h2>
             <h1 className="font-transat text-2xl text-center font-bold uppercase leading-normal">
               {title}

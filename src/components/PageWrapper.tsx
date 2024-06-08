@@ -25,7 +25,8 @@ export const PageWrapper = ({
       console.log(myNav)
       if (!myNav) return
       if (document.body.scrollTop >= 50 || document.documentElement.scrollTop >= 50) {
-        myNav.style.backgroundColor = colorMapping['LIGHT_GREY']
+        // TODO: remove this entirely if we don't have sticky navbars
+        myNav.style.backgroundColor = 'transparent' //colorMapping['LIGHT_GREY']
       } else {
         myNav.style.backgroundColor = 'transparent'
       }
@@ -40,7 +41,7 @@ export const PageWrapper = ({
 
   return (
     <div
-      className={`w-full min-h-screen flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border`}
+      className={`w-full h-fit flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border`}
     >
       {props.children}
     </div>
