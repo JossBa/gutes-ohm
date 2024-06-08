@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { clearGameState } from '../game/gameSlice'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { Button } from '../components/Button'
-import { PageWrapper } from '../components/PageWrapper'
 import { Footer } from '../components/Footer'
 
 export const Home = () => {
@@ -17,7 +16,7 @@ export const Home = () => {
   })
 
   return (
-    <PageWrapper>
+    <div className="w-full h-screen flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border">
       <div className="slope-element absolute h-screen w-full -z-10 bg-yellowdark"></div>
       <Hero />
       <ButtonContainer>
@@ -32,6 +31,6 @@ export const Home = () => {
         </Link>
       </ButtonContainer>
       <Footer />
-    </PageWrapper>
+    </div>
   )
 }
