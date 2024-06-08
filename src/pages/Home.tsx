@@ -16,7 +16,7 @@ export const Home = () => {
   })
 
   return (
-    <div className="w-full h-screen flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border">
+    <div className="h-screen w-full flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border">
       <div className="slope-element absolute h-screen w-full -z-10 bg-yellowdark"></div>
       <Hero />
       <ButtonContainer>
