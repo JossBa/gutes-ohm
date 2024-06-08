@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { names } from '../game/gameSlice'
@@ -14,7 +14,6 @@ import { InputLabel } from '../components/InputLabel'
 export const Names = ({ nextStep }: GameStepProps) => {
   const { playerA, playerB } = useSelector((state: RootState) => state.game)
   const dispatch = useDispatch()
-  const input1Ref = useRef<HTMLInputElement>(null)
 
   const [player1, setPlayer1] = useState(playerA)
   const [player2, setPlayer2] = useState(playerB)
