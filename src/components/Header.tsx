@@ -52,15 +52,15 @@ export const Header = React.memo(
       >
         <div className="flex justify-between w-full">
           <button onClick={handlePrevious ? handlePrevious : handlePreviousStep}>
-            <img className="p-1" src="/img/back.svg" alt="back-icon" />
+            <img className="p-1" src="./img/back.svg" alt="back-icon" />
           </button>
           {!shouldOnlyShowBackButton && (
             <div className="flex items-end">
               <button onClick={handleBreak}>
-                <img className="p-1" src="/img/pause.svg" alt="pause-icon" />
+                <img className="p-1" src="./img/pause.svg" alt="pause-icon" />
               </button>
               <button onClick={handleExit}>
-                <img className="p-1" src="/img/exit.svg" alt="exit-icon" />
+                <img className="p-1" src="./img/exit.svg" alt="exit-icon" />
               </button>
             </div>
           )}
