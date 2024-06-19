@@ -34,7 +34,7 @@ export const Consent = ({ nextStep }: GameStepProps) => {
   }
   return (
     <>
-      <Header title={`Bereit, ${currentPlayer}?`} section="Zu Beginn" />
+      <Header title={`Bereit, ${currentPlayer}?`} />
       <ContentWrapper>
         <PlayerIcon player={activePlayer} />
         <form className="space-y-8 px-2">

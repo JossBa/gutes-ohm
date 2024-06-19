@@ -8,7 +8,7 @@ import { GameStepProps } from '../types'
 export const PhaseThreeComplete = ({ nextStep }: GameStepProps) => {
   return (
     <>
-      <Header title={'Glückwunsch!'} section={'Phase 1/3'} />
+      <Header title={'Glückwunsch!'} section={'Phase 3/3'} />
       <ContentWrapper>
         <img
           className="inline sm:w-1/3 md:w-1/4 w-2/3"

@@ -39,11 +39,6 @@ export const Moodcheck = ({
           {activePlayerInstructions}
         </p>
         <div className="w-full flex flex-col space-y-4">
-          <img
-            src={`img/arrow.svg`}
-            alt="pfeil in zwei richtungen"
-            className="w-[74px] h-auto self-center mt-8"
-          />
           <div className="flex flex-row justify-between w-full">
             <RadioButton
               alt="angry mood"

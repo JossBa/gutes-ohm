@@ -8,13 +8,11 @@ import { BaseText } from '../components/BaseText'
 export const Onboarding = ({ nextStep }: GameStepProps) => {
   return (
     <>
-      <Header section={'Zu Beginn'} title={'Das erwartet euch'} />
+      <Header title={'Das erwartet euch'} />
       <ContentWrapper>
         <div className="space-y-1">
-          <BaseText text={'Streitlösung in ca. 30 min.'} />
-          <BaseText text={'Ein Prozess in 3 Phasen.'} />
+          <BaseText text={'Die Streitlösung dauert ca. 30 Minuten und findet in 3 Phasen statt.'} />
         </div>
-        <img src={`./img/speakbubble.png`} alt="speakbubble" className="inline w-3/5 md:w-1/3" />
       </ContentWrapper>
       <ButtonContainer>
         <Button title="Weiter" onClick={nextStep} />

@@ -27,7 +27,7 @@ export const PhaseThreeYourSolutions = ({ nextStep }: GameStepProps) => {
                     <li
                       key={index}
                       className={`text-left break-words p-2 mx-4 w-fit list-none ${
-                        item.player === 'player1' ? 'bg-yellowlight' : 'bg-bluedark'
+                        item.player === 'player1' ? 'bg-yellowlight' : 'bg-bluelight'
                       }`}
                     >
                       {item.solution}

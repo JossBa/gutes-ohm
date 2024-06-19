@@ -22,7 +22,7 @@ export const PhaseOneExplain = ({ nextStep }: GameStepProps) => {
         handleStart={handleStart}
         nextStep={nextStep}
         buttonTitle={started ? (counting ? 'Bin schon fertig' : 'Weiter') : 'Start'}
-        activePlayerInstructions={`Hey, ${currentPlayer}! Teile ${partnerPlayer} in drei Minuten deine Sicht auf den Konflikt mit.`}
+        activePlayerInstructions={`Hey, ${currentPlayer}! Teile ${partnerPlayer} in 3 Minuten deine Sicht auf den Konflikt mit.`}
         partnerPlayerInstructions={`${partnerPlayer}, deine Aufgabe ist es, aktiv zuzuhören und nicht zu reden.`}
       />
     </>

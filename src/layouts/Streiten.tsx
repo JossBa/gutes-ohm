@@ -5,7 +5,6 @@ import { nextStep } from '../game/gameSlice'
 import { useComponentByType } from '../game/getGameComponent'
 
 import { PageWrapper } from '../components/PageWrapper'
-import { Footer } from '../components/Footer'
 
 export const Streiten = () => {
   const { step } = useSelector((state: RootState) => state.game)
@@ -27,7 +26,6 @@ export const Streiten = () => {
     <PageWrapper colorChange={colorChange}>
       {/** <div className={`bg-pink-400 absolute inset-0 -z-10`}></div>*/}
       <GameComponent nextStep={handleNext} />
-      <Footer />
     </PageWrapper>
   )
 }

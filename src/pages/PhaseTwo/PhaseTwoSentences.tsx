@@ -33,7 +33,7 @@ export const PhaseTwoSentences = ({ nextStep }: GameStepProps) => {
         {counterRef.current < 0 ? (
           <>
             <p className="font-sourceSerif text-xl font-semibold text-center">
-              {`${currentPlayer}, du bekommst gleich drei Sätze nacheinander angezeigt. Vervollständige
+              {`${currentPlayer}, du bekommst gleich 3 Sätze nacheinander angezeigt. Vervollständige
           sie bitte!`}
             </p>
 

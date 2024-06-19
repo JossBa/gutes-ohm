@@ -34,7 +34,7 @@ export const Names = ({ nextStep }: GameStepProps) => {
 
   return (
     <>
-      <Header title="Wer seid ihr?" section="Zu Beginn" />
+      <Header title="Wer seid ihr?" />
       <ContentWrapper>
         <BaseText
           text={'Bitte tragt eure Namen ein. So kann OHM euch ideal durch euren Streit steuern.'}

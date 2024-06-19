@@ -20,7 +20,7 @@ export const FinaleSeeYouLater = ({ nextStep }: GameStepProps) => {
       </ContentWrapper>
       <ButtonContainer>
         <Link
-          className={`min-w-[220px] p-3 text-base font-medium font-transat uppercase tracking-wide bg-anthrazit text-slate-50`}
+          className={`min-w-[220px] h-11 p-3 pt-3 text-base font-bold font-transat uppercase tracking-widest bg-anthrazit text-slate-50`}
           to="https://www.gutes-ohm.com/#ohm"
           target="_blank"
           rel="noreferrer"
@@ -29,7 +29,7 @@ export const FinaleSeeYouLater = ({ nextStep }: GameStepProps) => {
         </Link>
         <Button onClick={nextStep} title={`OHM unterstützen`} />
         <Link
-          className={`min-w-[218px] p-3 text-base font-medium font-transat uppercase tracking-wide bg-transparent border-2 border-anthrazit text-anthrazit`}
+          className={`min-w-[218px] p-2 text-base font-bold font-transat uppercase tracking-wide bg-transparent border-2 border-anthrazit text-anthrazit`}
           to={`mailto:hallo@gutes-ohm.com?subject=Mediation buchen&body=${mediationEmailBody}`}
         >
           Mediation buchen

@@ -98,6 +98,14 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
     }
   }
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.style.height = 'inherit'
+      const scrollHeight = inputRef.current.scrollHeight
+      inputRef.current.style.height = `${scrollHeight}px`
+    }
+  }, [currentProposal])
+
   return (
     <>
       <Header title={`Erste Lösungen`} section={'Phase 3/3'}></Header>
@@ -105,10 +113,11 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-4">
           <div className="w-full space-y-4">
-            <BaseText
-              text={`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}
-            />
-
+            {playerSolutions.length === 0 && (
+              <BaseText
+                text={`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}
+              />
+            )}
             {playerSolutions.length > 0 && (
               <div className="mx-2 space-y-2 overflow-auto">
                 {playerSolutions.map((item) => {
@@ -116,7 +125,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
                     <div key={item.id} className="flex space-x-1">
                       <li
                         onClick={() => handleEditItem(item.id)}
-                        className="text-left break-words break-all bg-white p-2"
+                        className="list-none text-left break-words break-all bg-white p-2"
                       >
                         {item.solution}
                       </li>
@@ -146,11 +155,12 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
           )}
           {shouldShowInputField && (
             <div className="md:w-1/2 w-full mb-10">
-              <div className="flex space-x-2">
+              <div className="flex justify-center space-x-2">
                 <label>
                   <textarea
                     ref={inputRef}
-                    className={`w-full overflow-hidden border-2 border-anthrazit focus:border-bluedark focus:outline-none focus:ring-0 placeholder-opacity-75 placeholder-greymedium`}
+                    rows={1}
+                    className={`resize-y w-full border-2 border-anthrazit focus:border-bluedark focus:outline-none focus:ring-0 placeholder-opacity-75 placeholder-greymedium`}
                     name="solution"
                     required
                     placeholder="Vorschlag hinzufügen"
@@ -165,7 +175,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
                 <img
                   src={`img/send.svg`}
                   alt="add solution"
-                  className="inline self-start w-12 h-12 cursor-pointer"
+                  className="inline self-start w-10 cursor-pointer"
                   onClick={() => {
                     handleAddItem(currentProposal)
                   }}

@@ -10,14 +10,12 @@ type InputLabelProps = {
 const playerSettings = {
   player1: {
     iconPrimary: 'bg-quadrat-full',
-    iconSecondary: 'bg-quadrat-outline',
     placeholder: 'Erste Partei',
     color: 'bg-yellowlight',
     focus: 'focus:ring-yellowdark',
   },
   player2: {
     iconPrimary: 'bg-dreieck-full',
-    iconSecondary: 'bg-dreieck-outline',
     placeholder: 'Zweite Partei',
     color: 'bg-bluelight',
     focus: 'focus:ring-bluedark',
@@ -32,13 +30,11 @@ export const InputLabel = ({
   setError,
   scrollToTop,
 }: InputLabelProps) => {
-  const { color, iconPrimary, iconSecondary, placeholder, focus } = playerSettings[player]
+  const { color, iconPrimary, placeholder, focus } = playerSettings[player]
   return (
     <label>
       <input
-        className={`${color} w-64 h-14 p-4 m-2 border-none placeholder-opacity-75 placeholder-greymedium font-transat font-semibold text-l uppercase focus:outline-none focus:ring ${focus} bg-no-repeat bg-right bg-origin-content ${
-          playerName !== '' ? iconPrimary : iconSecondary
-        } `}
+        className={`${color} w-64 h-14 p-4 m-2 border-none placeholder-opacity-75 placeholder-greymedium font-transat font-semibold text-l uppercase focus:outline-none focus:ring ${focus} bg-no-repeat bg-right bg-origin-content ${iconPrimary}`}
         type="text"
         name={player}
         required

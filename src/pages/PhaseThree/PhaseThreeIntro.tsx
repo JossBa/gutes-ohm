@@ -10,11 +10,7 @@ export const PhaseThreeIntro = ({ nextStep }: GameStepProps) => {
     <>
       <Header title={`Happy End`} section={'Phase 3/3'}></Header>
       <ContentWrapper>
-        <BaseText
-          text={
-            'Brainstormt zusammen nach Ideen, um Lösungen zu finden, bei denen ihr beide auf eure Kosten kommt.'
-          }
-        />
+        <BaseText text={'Was könnten Lösungen sein, von denen ihr beide profitiert?'} />
 
         <img className="inline md:w-1/3 w-1/2" src={'./img/solutions.png'} alt="solutions" />
       </ContentWrapper>

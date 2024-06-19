@@ -7,7 +7,7 @@ export const FinaleMoodcheck = ({ nextStep }: GameStepProps) => {
 
   return (
     <Moodcheck
-      title={'Moodcheck'}
+      title={'Checkout'}
       section={'Abschluss'}
       activePlayerInstructions={`${currentPlayer}, wie zufrieden bist du mit eurer Lösung?`}
       buttonTitle={activePlayer === 'player1' ? `Weiter zu ${partnerPlayer}` : 'Weiter'}
