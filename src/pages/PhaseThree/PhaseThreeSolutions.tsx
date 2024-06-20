@@ -145,7 +145,7 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
           </div>
           <div className="w-full flex justify-center">
             {!shouldShowInputField && (
-              <div className="space-y-3 md:w-1/2 w-full text-left">
+              <div className="space-y-3 w-full text-left">
                 <button
                   className={`min-w-[218px] p-2 text-lg font-medium font-sourceSerif bg-transparent border-2 border-anthrazit text-anthrazit`}
                   onClick={() => setShouldShowInputField(true)}
@@ -155,9 +155,9 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
               </div>
             )}
             {shouldShowInputField && (
-              <div className="md:w-1/2 w-full mb-10">
+              <div className="w-full mb-10">
                 <div className="flex space-x-2">
-                  <label>
+                  <label className="md:w-2/3">
                     <textarea
                       ref={inputRef}
                       rows={1}
