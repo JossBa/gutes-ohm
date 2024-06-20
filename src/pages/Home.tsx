@@ -6,6 +6,7 @@ import { clearGameState } from '../game/gameSlice'
 import { ButtonContainer } from '../components/ButtonContainer'
 import { Button } from '../components/Button'
 import { Footer } from '../components/Footer'
+import { CustomLink } from '../components/Link'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -16,19 +17,12 @@ export const Home = () => {
   })
 
   return (
-    <div className="h-screen w-full flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border">
+    <div className="md:h-screen h-[100dvh] w-full flex flex-col max-w-4xl justify-between items-center text-center mx-auto box-border">
       <div className="slope-element absolute h-screen w-full -z-10 bg-yellowdark"></div>
       <Hero />
       <ButtonContainer>
         <Button title={'Start'} onClick={() => navigate('/streiten')} />
-        <Link
-          className={`min-w-[218px] p-2 pt-3 text-base font-bold font-transat uppercase tracking-widest border-2 bg-transparent border-anthrazit text-anthrazit`}
-          to="https://www.gutes-ohm.com/#ohm"
-          target="_blank"
-          rel="noreferrer"
-        >
-          About
-        </Link>
+        <CustomLink title={'About'} to="https://www.gutes-ohm.com/#ohm" style="secondary" />
       </ButtonContainer>
       <Footer />
     </div>

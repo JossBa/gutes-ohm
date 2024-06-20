@@ -41,7 +41,7 @@ export const PageWrapper = ({
 
   return (
     <div
-      className={`w-full h-fit flex flex-col max-w-4xl justify-between items-center text-center p-5 mx-auto box-border`}
+      className={`w-full h-[100dvh] flex flex-col max-w-4xl justify-between items-center text-center px-5 py-3 mx-auto box-border`}
     >
       {props.children}
     </div>

@@ -6,15 +6,16 @@ import { PlayerIcon } from '../../components/PlayerIcon'
 import { ButtonContainer } from '../../components/ButtonContainer'
 import { Button } from '../../components/Button'
 import { useRef, useState } from 'react'
+import { BaseText } from '../../components/BaseText'
 
 export const PhaseTwoSentences = ({ nextStep }: GameStepProps) => {
   const { activePlayer, currentPlayer, partnerPlayer } = usePlayers()
   const counterRef = useRef(-1)
   const [currentSentence, setCurrentSentence] = useState(``)
   const sentences = [
-    `»\nWenn ${partnerPlayer}...\ndann fühle ich mich...\n«`,
-    `»\nIch brauche...um mich besser zu fühlen.\n«`,
-    `»\nIch wünsche mir von ${partnerPlayer}...\n«`,
+    `»Wenn ${partnerPlayer}... dann fühle ich mich ...«`,
+    `»Ich brauche... um mich besser zu fühlen.«`,
+    `»Ich wünsche mir von ${partnerPlayer}...«`,
   ]
 
   const handleNextSentence = () => {
@@ -32,25 +33,24 @@ export const PhaseTwoSentences = ({ nextStep }: GameStepProps) => {
         <PlayerIcon player={activePlayer} display="full" />
         {counterRef.current < 0 ? (
           <>
-            <p className="font-sourceSerif text-xl font-semibold text-center">
-              {`${currentPlayer}, du bekommst gleich 3 Sätze nacheinander angezeigt. Vervollständige
+            <BaseText
+              text={`${currentPlayer}, du bekommst gleich 3 Sätze nacheinander angezeigt. Vervollständige
           sie bitte!`}
-            </p>
+            />
 
             <PlayerIcon
               player={activePlayer === 'player1' ? 'player2' : 'player1'}
               display="outline"
             />
-            <p className="font-sourceSerif text-xl font-semibold text-center italic">
-              {`${partnerPlayer}, aufmerksam zuhören!`}
-            </p>
+            <BaseText text={`${partnerPlayer}, aufmerksam zuhören!`} italic="italic" />
           </>
         ) : (
           <>
-            <p className="font-sourceSerif text-xl font-semibold text-center">{`${currentPlayer}, vervollständige den ${
-              counterRef.current + 1
-            }. Satz:`}</p>
-            <p className="font-sourceSerif text-xl font-semibold text-center italic whitespace-pre">
+            <BaseText
+              text={`${currentPlayer}, vervollständige den ${counterRef.current + 1}. Satz:`}
+            />
+            <br />
+            <p className="font-sourceSerif text-2xl font-semibold text-center italic break-words">
               {currentSentence}
             </p>
           </>

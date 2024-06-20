@@ -111,86 +111,88 @@ export const PhaseThreeSolutions = ({ nextStep }: GameStepProps) => {
       <Header title={`Erste Lösungen`} section={'Phase 3/3'}></Header>
       <ContentWrapper>
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
-        <div className="w-full flex flex-col items-center space-y-4">
-          <div className="w-full space-y-4">
-            {playerSolutions.length === 0 && (
-              <BaseText
-                text={`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}
-              />
-            )}
-            {playerSolutions.length > 0 && (
-              <div className="mx-2 space-y-2 overflow-auto">
-                {playerSolutions.map((item) => {
-                  return (
-                    <div key={item.id} className="flex space-x-1">
-                      <li
-                        onClick={() => handleEditItem(item.id)}
-                        className="list-none text-left break-words break-all bg-white p-2"
-                      >
-                        {item.solution}
-                      </li>
-                      <img
-                        src={`img/delete.svg`}
-                        alt="delete solution"
-                        className="inline self-start w-6 h-6 cursor-pointer"
-                        onClick={() => handleRemoveItem(item.id)}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="w-full px-4 flex justify-center">
-          {!shouldShowInputField && (
-            <div className="space-y-3 md:w-1/2 w-full">
-              <button
-                className={`min-w-[218px] p-3 text-lg font-medium font-sourceSerif bg-transparent border-2 border-anthrazit text-anthrazit`}
-                onClick={() => setShouldShowInputField(true)}
-              >
-                + Vorschlag hinzufügen
-              </button>
-            </div>
-          )}
-          {shouldShowInputField && (
-            <div className="md:w-1/2 w-full mb-10">
-              <div className="flex justify-center space-x-2">
-                <label>
-                  <textarea
-                    ref={inputRef}
-                    rows={1}
-                    className={`resize-y w-full border-2 border-anthrazit focus:border-bluedark focus:outline-none focus:ring-0 placeholder-opacity-75 placeholder-greymedium`}
-                    name="solution"
-                    required
-                    placeholder="Vorschlag hinzufügen"
-                    value={currentProposal}
-                    onChange={(e) => {
-                      setCurrentProposal(e.target.value)
-                    }}
-                    onKeyDown={handleInputKeyPress}
-                    autoComplete="off"
-                  />
-                </label>
-                <img
-                  src={`img/send.svg`}
-                  alt="add solution"
-                  className="inline self-start w-10 cursor-pointer"
-                  onClick={() => {
-                    handleAddItem(currentProposal)
-                  }}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-        {error && (
+        <div className="mx-2 space-y-4 ">
           <div className="w-full flex flex-col items-center">
-            <p className="animate-shake animate-once text-red-600 text-base mb-2 pl-2 md:w-1/2 w-full">
-              Versucht mindestens einen Lösungsvorschlag zu finden bevor ihr weiter macht.
-            </p>
+            <div className="w-full space-y-4 text-left">
+              {playerSolutions.length === 0 && (
+                <BaseText
+                  text={`Schreibt jetzt auf, was ihr tun könnt, damit ${currentPlayer} zufriedener wird.`}
+                />
+              )}
+              {playerSolutions.length > 0 && (
+                <div className="space-y-2 overflow-auto">
+                  {playerSolutions.map((item) => {
+                    return (
+                      <div key={item.id} className="flex space-x-1">
+                        <li
+                          onClick={() => handleEditItem(item.id)}
+                          className="list-none text-left break-words break-all bg-white p-2"
+                        >
+                          {item.solution}
+                        </li>
+                        <img
+                          src={`img/delete.svg`}
+                          alt="delete solution"
+                          className="inline self-start w-6 h-6 cursor-pointer"
+                          onClick={() => handleRemoveItem(item.id)}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+          <div className="w-full flex justify-center">
+            {!shouldShowInputField && (
+              <div className="space-y-3 md:w-1/2 w-full text-left">
+                <button
+                  className={`min-w-[218px] p-2 text-lg font-medium font-sourceSerif bg-transparent border-2 border-anthrazit text-anthrazit`}
+                  onClick={() => setShouldShowInputField(true)}
+                >
+                  + Vorschlag hinzufügen
+                </button>
+              </div>
+            )}
+            {shouldShowInputField && (
+              <div className="md:w-1/2 w-full mb-10">
+                <div className="flex space-x-2">
+                  <label>
+                    <textarea
+                      ref={inputRef}
+                      rows={1}
+                      className={`resize-y w-full border-2 border-anthrazit focus:border-bluedark focus:outline-none focus:ring-0 placeholder-opacity-75 placeholder-greymedium`}
+                      name="solution"
+                      required
+                      placeholder="Vorschlag hinzufügen"
+                      value={currentProposal}
+                      onChange={(e) => {
+                        setCurrentProposal(e.target.value)
+                      }}
+                      onKeyDown={handleInputKeyPress}
+                      autoComplete="off"
+                    />
+                  </label>
+                  <img
+                    src={`img/send.svg`}
+                    alt="add solution"
+                    className="inline self-start w-[40px] cursor-pointer"
+                    onClick={() => {
+                      handleAddItem(currentProposal)
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+          {error && (
+            <div className="w-full flex flex-col items-center">
+              <p className="animate-shake animate-once text-red-600 text-base mb-2 pl-2 md:w-1/2 w-full">
+                Versucht mindestens einen Lösungsvorschlag zu finden bevor ihr weiter macht.
+              </p>
+            </div>
+          )}
+        </div>
       </ContentWrapper>
       <ButtonContainer>
         <Button onClick={handleSubmitItems} title={`weiter`} />

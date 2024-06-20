@@ -6,6 +6,7 @@ import { GameStepProps } from '../pages/types'
 import RadioButton from './RadioButton'
 import { useState } from 'react'
 import { PlayerIcon } from './PlayerIcon'
+import { BaseText } from './BaseText'
 
 type Mood = 'mood-level-1' | 'mood-level-2' | 'mood-level-3' | 'mood-level-4' | 'mood-level-5'
 
@@ -35,9 +36,7 @@ export const Moodcheck = ({
       <Header section={section} title={title} />
       <ContentWrapper>
         <PlayerIcon player={activePlayer === 'player1' ? 'player2' : 'player1'} display="full" />
-        <p className="font-sourceSerif text-xl font-semibold text-center">
-          {activePlayerInstructions}
-        </p>
+        <BaseText text={activePlayerInstructions} />
         <div className="w-full flex flex-col space-y-4">
           <div className="flex flex-row justify-between w-full">
             <RadioButton

@@ -15,7 +15,7 @@ export const Button = ({ title, onClick, disabled, buttonStyle = 'primary' }: Bu
     <button
       disabled={disabled}
       className={`${
-        buttonStyle === 'primary' ? 'min-w-[220px]' : 'min-w-[218px]'
+        buttonStyle === 'primary' ? 'min-w-[280px]' : 'min-w-[278px]'
       } p-2 pt-3 text-base font-bold font-transat uppercase tracking-widest ${
         styling[buttonStyle]
       } `}

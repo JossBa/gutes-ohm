@@ -7,8 +7,9 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../app/store'
 import { Solution, selectSolutions } from '../../game/gameSlice'
+import { BaseText } from '../../components/BaseText'
 
-const CheckListItem = ({
+export const CheckListItem = ({
   index,
   item,
   handleSelect,
@@ -66,10 +67,12 @@ export const PhaseThreeSelectSolutions = ({ nextStep }: GameStepProps) => {
         <img src={`img/joint-players.svg`} alt="player2 symbol" className="inline self-center" />
         <div className="w-full flex flex-col items-center space-y-6 font-sourceSerif">
           {allSolutions.length === 0 ? (
-            <p>{`Wir konnten leider keine Lösungsvorschläge finden.`}</p>
+            <BaseText text={`Wir konnten leider keine Lösungsvorschläge finden.`} />
           ) : (
-            <p>{`Hier sind eure Lösungsvorschläge. Entscheidet gemeinsam, welche davon ihr ausprobieren
-            möchtet.`}</p>
+            <BaseText
+              text={`Hier sind eure Lösungsvorschläge. Entscheidet gemeinsam, welche davon ihr ausprobieren
+            möchtet.`}
+            />
           )}
           <div className="space-y-4 w-full px-4">
             {allSolutions.map((item, index) => (
