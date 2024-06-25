@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gutes-ohm/static/css/main.c884da1e.css",
-    "main.js": "/gutes-ohm/static/js/main.91eda67d.js",
+    "main.js": "/gutes-ohm/static/js/main.29e90bbc.js",
     "static/js/787.4b3b2199.chunk.js": "/gutes-ohm/static/js/787.4b3b2199.chunk.js",
     "static/media/TextBold.woff2": "/gutes-ohm/static/media/TextBold.90c83e6422f0a69a30f6.woff2",
     "static/media/TextStandard.woff2": "/gutes-ohm/static/media/TextStandard.e41e159ec7b6730da69f.woff2",
@@ -15,11 +15,11 @@
     "static/media/dreieck-full.svg": "/gutes-ohm/static/media/dreieck-full.f66e6d5ef2855b078db2.svg",
     "static/media/quadrat-full.svg": "/gutes-ohm/static/media/quadrat-full.e89ff38a3bdfb6a5edcc.svg",
     "main.c884da1e.css.map": "/gutes-ohm/static/css/main.c884da1e.css.map",
-    "main.91eda67d.js.map": "/gutes-ohm/static/js/main.91eda67d.js.map",
+    "main.29e90bbc.js.map": "/gutes-ohm/static/js/main.29e90bbc.js.map",
     "787.4b3b2199.chunk.js.map": "/gutes-ohm/static/js/787.4b3b2199.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c884da1e.css",
-    "static/js/main.91eda67d.js"
+    "static/js/main.29e90bbc.js"
   ]
 }
