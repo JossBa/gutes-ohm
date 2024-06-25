@@ -15,7 +15,7 @@ export const PhaseTwoCheck = ({ nextStep }: GameStepProps) => {
         <p className="font-sourceSerif text-xl font-semibold text-center">
           Das lassen wir jetzt erstmal so stehen. Danke!
         </p>
-        <img className="inline w-1/2" src={'./img/thank-you.svg'} alt="rotating arrows" />
+        <img className="inline w-1/2" src={'./img/check-herz.png'} alt="rotating arrows" />
       </ContentWrapper>
       <ButtonContainer>
         <Button
