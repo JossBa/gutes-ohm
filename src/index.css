@@ -48,55 +48,55 @@ code {
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/public/fonts/transat/TextStandard.woff2) format('woff2');
+    src: url(/fonts/transat/TextStandard.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url(/public/fonts/transat/TextStandardOblique.woff2) format('woff2');
+    src: url(/fonts/transat/TextStandardOblique.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(/public/fonts/transat/TextMedium.woff2) format('woff2');
+    src: url(/fonts/transat/TextMedium.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: italic;
     font-weight: 500;
     font-display: swap;
-    src: url(/public/fonts/transat/TextMediumOblique.woff2) format('woff2');
+    src: url(/fonts/transat/TextMediumOblique.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(/public/fonts/transat/TextBold.woff2) format('woff2');
+    src: url(/fonts/transat/TextBold.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: italic;
     font-weight: 700;
     font-display: swap;
-    src: url(/public/fonts/transat/TextBoldOblique.woff2) format('woff2');
+    src: url(/fonts/transat/TextBoldOblique.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url(/public/fonts/transat/TextBlack.woff2) format('woff2');
+    src: url(/fonts/transat/TextBlack.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Transat';
     font-style: italic;
     font-weight: 900;
     font-display: swap;
-    src: url(/public/fonts/transat/TextBlackOblique.woff2) format('woff2');
+    src: url(/fonts/transat/TextBlackOblique.woff2) format('woff2');
   }
 }
